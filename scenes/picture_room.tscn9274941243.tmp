@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cw6l50sfdoc2s"]
+
+[ext_resource type="Script" uid="uid://cbb1ghhd4u6gm" path="res://scenes/draggable_body.gd" id="1_6mc56"]
+[ext_resource type="Script" uid="uid://ud4gofihb3ew" path="res://scenes/drag_n_drop_controller.gd" id="1_erv0l"]
+[ext_resource type="ArrayMesh" uid="uid://g1u5rq1ekmjr" path="res://Models/OBJ format/animal-bunny.obj" id="1_g3mmq"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6mc56"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_k86af"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kvlo3"]
+size = Vector3(1, 1.2568359, 1)
+
+[node name="Node3D" type="Node3D" unique_id=793209605]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=799441515]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 5.4976296, 5.4216137)
+current = true
+
+[node name="Walls" type="Node3D" parent="." unique_id=1116926271]
+
+[node name="Floor" type="MeshInstance3D" parent="Walls" unique_id=1931447899]
+transform = Transform3D(11.749754, 0, 0, 0, 1.1649158e-07, 1, 0, -9.768784, 1.1924881e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Floor" unique_id=931222551]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Floor/StaticBody3D" unique_id=244589162]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, -7.1054274e-15, 0.99999994, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_k86af")
+
+[node name="NWall" type="MeshInstance3D" parent="Walls" unique_id=1008346535]
+transform = Transform3D(11.749754, 0, 0, 0, 9.768784, 0, 0, 0, 1, 0, 4.863922, -4.9233065)
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="WWall" type="MeshInstance3D" parent="Walls" unique_id=1174272057]
+transform = Transform3D(-5.135981e-07, 0, 1, 0, 9.768784, 0, -11.749754, 0, -4.371139e-08, -5.8604813, 4.6380124, 0)
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="EWall" type="MeshInstance3D" parent="Walls" unique_id=461550520]
+transform = Transform3D(1.4011441e-07, 0, -1, 0, 9.768784, 0, 11.749754, 0, 1.1924881e-08, 5.833956, 4.8476357, 0)
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=970239532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4295195, 5.6085884e-07, 1.2049832)
+script = ExtResource("1_6mc56")
+
+[node name="AnimalBunny2" type="MeshInstance3D" parent="CharacterBody3D" unique_id=2068435649]
+mesh = ExtResource("1_g3mmq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=941804985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7026368, 0)
+shape = SubResource("BoxShape3D_kvlo3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=601839849]
+transform = Transform3D(1, 0, 0, 0, 0.8288521, 0.5594678, 0, -0.5594678, 0.8288521, 0, 8.1238985, 7.758585)
+
+[node name="DragNDropController" type="Node3D" parent="." unique_id=610225865]
+script = ExtResource("1_erv0l")

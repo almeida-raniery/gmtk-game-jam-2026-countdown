@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://cw6l50sfdoc2s"]
+
+[ext_resource type="Script" uid="uid://cbb1ghhd4u6gm" path="res://scenes/draggable_body.gd" id="1_6mc56"]
+[ext_resource type="Script" uid="uid://ud4gofihb3ew" path="res://scenes/drag_n_drop_controller.gd" id="1_erv0l"]
+[ext_resource type="ArrayMesh" uid="uid://g1u5rq1ekmjr" path="res://Models/OBJ format/animal-bunny.obj" id="1_g3mmq"]
+[ext_resource type="Script" uid="uid://dlay6khifsmue" path="res://scenes/picture_room.gd" id="1_k86af"]
+[ext_resource type="ArrayMesh" uid="uid://bqtv2bk2512ux" path="res://Models/OBJ format/animal-koala.obj" id="3_bwfyf"]
+[ext_resource type="Script" uid="uid://d2dqb184gs4k5" path="res://scenes/picture_viewport.gd" id="4_6mc56"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6mc56"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_erv0l"]
+size = Vector3(1, 1, 0.49267578)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6mc56"]
+size = Vector3(1, 1, 0.5004883)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k86af"]
+size = Vector3(1, 1, 0.49560547)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwfyf"]
+size = Vector3(1, 1, 0.49560547)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kvlo3"]
+size = Vector3(1.2969971, 0.22265625, 1.5498047)
+
+[node name="Main" type="Node3D" unique_id=793209605 node_paths=PackedStringArray("camera_subviewport")]
+script = ExtResource("1_k86af")
+camera_subviewport = NodePath("Control/CameraUI/SubViewportContainer/SubViewport")
+
+[node name="TopViewCamera" type="Camera3D" parent="." unique_id=799441515]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.742, -1.031043)
+projection = 1
+current = true
+size = 11.28
+
+[node name="Walls" type="Node3D" parent="." unique_id=1116926271]
+
+[node name="Floor" type="MeshInstance3D" parent="Walls" unique_id=1931447899]
+transform = Transform3D(12.03, 0, 0, 0, -4.371139e-07, 1.023, 0, -10, -4.471675e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Floor" unique_id=931222551]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Floor/StaticBody3D" unique_id=244589162]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, -1.4432899e-15, 0, -4.8316906e-13, 0.9999979, 0, 2.7755576e-17, -0.25366202)
+shape = SubResource("BoxShape3D_erv0l")
+
+[node name="NWall" type="MeshInstance3D" parent="Walls" unique_id=1008346535]
+transform = Transform3D(11.749754, 0, 0, 0, 9.768784, 0, 0, 0, 1, 0, 4.863922, -4.9233065)
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/NWall" unique_id=1934412687]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/NWall/StaticBody3D" unique_id=1101088218]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, -7.1054075e-15, 0.99999714, 0, 0, -0.24975586)
+shape = SubResource("BoxShape3D_6mc56")
+
+[node name="WWall" type="MeshInstance3D" parent="Walls" unique_id=1174272057]
+transform = Transform3D(-5.135981e-07, 0, 1, 0, 9.768784, 0, -11.749754, 0, -4.371139e-08, -5.8604813, 4.6380124, 0)
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/WWall" unique_id=533339657]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WWall/StaticBody3D" unique_id=43268515]
+transform = Transform3D(0.9999999, 1.5777218e-30, -2.220446e-16, 0, 0.9999999, 0, 1.2505552e-12, -7.105418e-15, 0.9999986, 0, 0, -0.25219727)
+shape = SubResource("BoxShape3D_k86af")
+
+[node name="EWall" type="MeshInstance3D" parent="Walls" unique_id=461550520]
+transform = Transform3D(1.4011441e-07, 0, -1, 0, 9.768784, 0, 11.749754, 0, 1.1924881e-08, 5.833956, 4.8476357, 0)
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/EWall" unique_id=772063920]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/EWall/StaticBody3D" unique_id=1852093149]
+transform = Transform3D(0.9999999, 1.4199496e-29, -1.9984014e-15, 0, 0.9999999, 0, 1.2221335e-12, -7.105409e-15, 0.9999974, 0, 0, -0.25219727)
+shape = SubResource("BoxShape3D_bwfyf")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=970239532 groups=["moveable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9846568, 0, 1.3762875)
+script = ExtResource("1_6mc56")
+
+[node name="AnimalBunny2" type="MeshInstance3D" parent="CharacterBody3D" unique_id=2068435649]
+mesh = ExtResource("3_bwfyf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=941804985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023010254, 0.1855469, -0.27490234)
+shape = SubResource("BoxShape3D_kvlo3")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="." unique_id=214474170 groups=["moveable"]]
+script = ExtResource("1_6mc56")
+
+[node name="AnimalBunny2" type="MeshInstance3D" parent="CharacterBody3D2" unique_id=755158091]
+mesh = ExtResource("1_g3mmq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2" unique_id=605998206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023010254, 0.1855469, -0.27490234)
+shape = SubResource("BoxShape3D_kvlo3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=601839849]
+transform = Transform3D(0.4751182, -0.4059871, 0.7806646, 0.21106946, 0.9138788, 0.34680724, -0.8542321, -1.5647883e-08, 0.5198919, 4.8293495, 11.841376, 7.758585)
+
+[node name="DragNDropController" type="Node3D" parent="." unique_id=610225865]
+visible = false
+script = ExtResource("1_erv0l")
+
+[node name="Control" type="Control" parent="." unique_id=1606836278]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CameraUI" type="VBoxContainer" parent="Control" unique_id=1859615672]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -352.0
+offset_right = -54.0
+offset_bottom = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/CameraUI" unique_id=831283962]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Control/CameraUI/SubViewportContainer" unique_id=1926675096]
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+script = ExtResource("4_6mc56")
+
+[node name="PictureCamera" type="Camera3D" parent="Control/CameraUI/SubViewportContainer/SubViewport" unique_id=1227041583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7)
+projection = 1
+size = 6.0
+
+[node name="CameraButtons" type="HBoxContainer" parent="Control/CameraUI" unique_id=739095006]
+layout_mode = 2
+
+[node name="CameraShootButton" type="Button" parent="Control/CameraUI/CameraButtons" unique_id=1542160905]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "[ ]"
+
+[connection signal="pressed" from="Control/CameraUI/CameraButtons/CameraShootButton" to="." method="_on_camera_shoot_button_pressed"]
