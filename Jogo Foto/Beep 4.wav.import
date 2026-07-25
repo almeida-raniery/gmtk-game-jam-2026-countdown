@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ccyqycamb5jjv"
+path="res://.godot/imported/Beep 4.wav-13bda2c61fe516555e9993aaa8cabf4d.sample"
+
+[deps]
+
+source_file="res://Jogo Foto/Beep 4.wav"
+dest_files=["res://.godot/imported/Beep 4.wav-13bda2c61fe516555e9993aaa8cabf4d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bv2fi5baoq0bq" path="res://data/character_score_resource.gd" id="1_omxvf"]
 [ext_resource type="Script" uid="uid://cniccv4g0byjl" path="res://data/picture_score_resource.gd" id="2_da0lg"]
-[ext_resource type="Texture2D" uid="uid://dnffv8tyhixiw" path="res://image.png" id="2_g85b7"]
+[ext_resource type="Texture2D" uid="uid://d4fhcm3bhnnae" path="res://image_2.png" id="2_g85b7"]
 
 [sub_resource type="Resource" id="Resource_omxvf"]
 script = ExtResource("1_omxvf")
@@ -21,5 +21,5 @@ character_scores = Dictionary[String, ExtResource("1_omxvf")]({
 "Koala": SubResource("Resource_da0lg")
 })
 reference_texture = ExtResource("2_g85b7")
-difference_margin = 0.35
+difference_margin = 0.5
 metadata/_custom_type_script = "uid://cniccv4g0byjl"

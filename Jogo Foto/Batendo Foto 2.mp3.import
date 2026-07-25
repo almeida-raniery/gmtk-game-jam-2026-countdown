@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ja28xn3ofgjt"
+path="res://.godot/imported/Batendo Foto 2.mp3-5043282d9a7b8228767c25841369398b.mp3str"
+
+[deps]
+
+source_file="res://Jogo Foto/Batendo Foto 2.mp3"
+dest_files=["res://.godot/imported/Batendo Foto 2.mp3-5043282d9a7b8228767c25841369398b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

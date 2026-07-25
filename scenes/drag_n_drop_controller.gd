@@ -3,6 +3,8 @@ extends Node3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+@export_flags_3d_physics var mouse_layer_mask: int
+
 var draggingCollider: MoveableBody
 var mousePosition: Vector3
 var doDrag = false
@@ -12,7 +14,7 @@ func _input(event: InputEvent):
 	
 	if event is InputEventMouse:
 		intersect = get_mouse_intersect(event.position)
-		if intersect: mousePosition = intersect.position 
+		if intersect: mousePosition = Vector3(intersect.position.x, 0.5, intersect.position.z)
 		#snap on collider
 		#if intersect: mousePosition = intersect.collider.global_position
 		
@@ -51,6 +53,7 @@ func get_mouse_intersect(mousePosition: Vector2) -> Dictionary:
 	
 	params.from = currentCamera.project_ray_origin(mousePosition)
 	params.to = currentCamera.project_position(mousePosition, 1000)
+	params.collision_mask = mouse_layer_mask
 	if draggingCollider: params.exclude = [draggingCollider]
 	
 	var worldspace = get_world_3d().direct_space_state

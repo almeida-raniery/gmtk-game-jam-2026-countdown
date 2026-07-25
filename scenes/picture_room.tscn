@@ -7,11 +7,14 @@
 [ext_resource type="Resource" uid="uid://b4mn8h64l71cf" path="res://data/score_resource.tres" id="2_6aww1"]
 [ext_resource type="ArrayMesh" uid="uid://bqtv2bk2512ux" path="res://Models/OBJ format/animal-koala.obj" id="3_bwfyf"]
 [ext_resource type="Script" uid="uid://d2dqb184gs4k5" path="res://scenes/picture_viewport.gd" id="4_6mc56"]
-[ext_resource type="Texture2D" uid="uid://dnffv8tyhixiw" path="res://image.png" id="7_64o1v"]
-[ext_resource type="Texture2D" uid="uid://i2xdhd47eqsh" path="res://picture-template-overlay.png" id="8_1dsiy"]
 [ext_resource type="Script" uid="uid://b4toax1n7si00" path="res://scenes/picture_result_icon.gd" id="9_ntq1h"]
 [ext_resource type="Texture2D" uid="uid://bws11bdg82d4g" path="res://sprites/icon_outline_checkmark.png" id="10_6aww1"]
 [ext_resource type="Texture2D" uid="uid://chj5jqu53qciy" path="res://sprites/icon_outline_cross.png" id="11_q0x86"]
+[ext_resource type="Texture2D" uid="uid://chokge5ov21wm" path="res://picture-template-overlay_2.png" id="12_jh5qs"]
+[ext_resource type="Script" uid="uid://cie5yc7f3q8pc" path="res://scenes/countdown_timer.gd" id="13_q0x86"]
+[ext_resource type="Script" uid="uid://cwhiujyy8ansp" path="res://scenes/countdown_label.gd" id="14_01b81"]
+[ext_resource type="Texture2D" uid="uid://oifvku57jvg7" path="res://sprites/ui2.png" id="15_dlnkt"]
+[ext_resource type="PackedScene" uid="uid://c6ipdb1ma8nmv" path="res://scenes/player.tscn" id="15_jh5qs"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6mc56"]
 
@@ -27,11 +30,18 @@ size = Vector3(1, 1, 0.49560547)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kvlo3"]
 size = Vector3(1, 0.5, 1)
 
-[node name="Main" type="Node3D" unique_id=793209605 node_paths=PackedStringArray("camera_subviewport", "reference_rect")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh5qs"]
+atlas = ExtResource("15_dlnkt")
+region = Rect2(1064, 0, 472, 480)
+
+[node name="Main" type="Node3D" unique_id=793209605 node_paths=PackedStringArray("camera_subviewport")]
 script = ExtResource("1_k86af")
 camera_subviewport = NodePath("Control/CameraUI/SubViewportContainer/SubViewport")
-reference_rect = NodePath("Control/TextureRect")
 picture_score_data = ExtResource("2_6aww1")
+
+[node name="CountdownTimer" type="Node" parent="." unique_id=109313675]
+script = ExtResource("13_q0x86")
+countdown_start = 5
 
 [node name="TopViewCamera" type="Camera3D" parent="." unique_id=799441515]
 transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 4.5, 7.5, 4.5)
@@ -51,18 +61,53 @@ mesh = SubResource("QuadMesh_6mc56")
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, -1.4432899e-15, 0, -4.8316906e-13, 0.9999979, 0, 2.7755576e-17, -0.25366202)
 shape = SubResource("BoxShape3D_erv0l")
 
-[node name="NWall" type="MeshInstance3D" parent="Walls" unique_id=1008346535]
-transform = Transform3D(11.749754, 0, 0, 0, 9.768784, 0, 0, 0, 1, 0, 4.863922, -4.9233065)
+[node name="X" type="Decal" parent="Walls/Floor" unique_id=548062302]
+transform = Transform3D(0.99999744, 0, 0, 0, -4.3711392e-08, -0.99999964, 0, 0.99999964, -4.3711367e-08, 0.17476973, -0.10916338, -1.9769921e-07)
+size = Vector3(0.1, 0.1, 0.1)
+texture_albedo = ExtResource("11_q0x86")
+
+[node name="EWall" type="MeshInstance3D" parent="Walls" unique_id=1008346535]
+transform = Transform3D(-5.135981e-07, 0, -1, 0, 9.768784, 0, 11.749754, 0, -4.371139e-08, 5.8858004, 4.863922, 0.14664078)
+layers = 2
 mesh = SubResource("QuadMesh_6mc56")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/NWall" unique_id=1934412687]
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/EWall" unique_id=1934412687]
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/NWall/StaticBody3D" unique_id=1101088218]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/EWall/StaticBody3D" unique_id=1101088218]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, -7.1054075e-15, 0.99999714, 0, 0, -0.24975586)
+shape = SubResource("BoxShape3D_6mc56")
+
+[node name="SWall" type="MeshInstance3D" parent="Walls" unique_id=500493533]
+transform = Transform3D(-11.749754, 0, -8.742278e-08, 0, 9.768784, 0, 1.0271962e-06, 0, -1, -0.081606865, 4.863922, 5.011184)
+layers = 2
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/SWall" unique_id=474564543]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/SWall/StaticBody3D" unique_id=1966923740]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, -7.1054075e-15, 0.99999714, 0, 0, -0.24975586)
+shape = SubResource("BoxShape3D_6mc56")
+
+[node name="NWall" type="MeshInstance3D" parent="Walls" unique_id=397218195]
+transform = Transform3D(11.749754, 0, 0, 0, 9.768784, 0, 0, 0, 1, 0, 4.863922, -4.9233065)
+layers = 2
+mesh = SubResource("QuadMesh_6mc56")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/NWall" unique_id=1043674669]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/NWall/StaticBody3D" unique_id=1395026278]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, -7.1054075e-15, 0.99999714, 0, 0, -0.24975586)
 shape = SubResource("BoxShape3D_6mc56")
 
 [node name="WWall" type="MeshInstance3D" parent="Walls" unique_id=1174272057]
 transform = Transform3D(-5.135981e-07, 0, 1, 0, 9.768784, 0, -11.749754, 0, -4.371139e-08, -5.8604813, 4.6380124, 0)
+layers = 2
 mesh = SubResource("QuadMesh_6mc56")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/WWall" unique_id=533339657]
@@ -101,6 +146,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0)
 [node name="DragNDropController" type="Node3D" parent="." unique_id=610225865]
 visible = false
 script = ExtResource("1_erv0l")
+mouse_layer_mask = 1
+
+[node name="PlayerCharacter" parent="." unique_id=307017552 instance=ExtResource("15_jh5qs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1208894, 4.3413615)
 
 [node name="Control" type="Control" parent="." unique_id=1606836278]
 layout_mode = 3
@@ -149,32 +198,20 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 text = "[ ]"
 
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1769797979]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.177
-anchor_bottom = 0.25
-offset_left = 835.0
-offset_top = 11.0
-offset_right = 895.45
-offset_bottom = 113.25
-texture = ExtResource("7_64o1v")
-
 [node name="PictureOverlay" type="TextureRect" parent="Control" unique_id=1574688413]
 layout_mode = 0
-offset_left = 840.0
-offset_top = 295.0
-offset_right = 1096.0
-offset_bottom = 551.0
-texture = ExtResource("8_1dsiy")
+offset_left = 1608.0
+offset_top = 727.0
+offset_right = 1864.0
+offset_bottom = 983.0
+texture = ExtResource("12_jh5qs")
 
 [node name="PictureResultHud" type="Control" parent="Control" unique_id=1919818494]
 anchors_preset = 0
-offset_left = 951.0
-offset_top = 310.0
-offset_right = 991.0
-offset_bottom = 350.0
+offset_left = 1723.0
+offset_top = 756.0
+offset_right = 1763.0
+offset_bottom = 796.0
 script = ExtResource("9_ntq1h")
 
 [node name="Success" type="TextureRect" parent="Control/PictureResultHud" unique_id=157147192]
@@ -191,5 +228,33 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("11_q0x86")
 
+[node name="Countdown Label" type="Label" parent="Control" unique_id=2143904771]
+visible = false
+layout_mode = 0
+offset_left = 539.0
+offset_top = 23.0
+offset_right = 576.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 64
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("14_01b81")
+
+[node name="NinePatchRect" type="TextureRect" parent="Control" unique_id=1291998920]
+visible = false
+layout_mode = 0
+offset_left = 1581.0
+offset_top = 695.0
+offset_right = 1896.0
+offset_bottom = 1077.0
+texture = SubResource("AtlasTexture_jh5qs")
+expand_mode = 4
+stretch_mode = 4
+
 [connection signal="picture_compared" from="." to="Control/PictureResultHud" method="_on_main_picture_compared"]
-[connection signal="pressed" from="Control/CameraUI/CameraButtons/CameraShootButton" to="." method="_on_camera_shoot_button_pressed"]
+[connection signal="countdown_ended" from="CountdownTimer" to="." method="_on_camera_shoot"]
+[connection signal="countdown_started" from="CountdownTimer" to="PlayerCharacter" method="_on_countdown_timer_countdown_started"]
+[connection signal="countdown_started" from="CountdownTimer" to="Control/Countdown Label" method="_on_node_countdown_started"]
+[connection signal="countdown_updated" from="CountdownTimer" to="Control/Countdown Label" method="_on_countdown_timer_countdown_updated"]
+[connection signal="pressed" from="Control/CameraUI/CameraButtons/CameraShootButton" to="CountdownTimer" method="start_countdown"]
