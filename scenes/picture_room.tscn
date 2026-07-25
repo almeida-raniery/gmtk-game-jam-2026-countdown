@@ -6,7 +6,11 @@
 [ext_resource type="Script" uid="uid://dlay6khifsmue" path="res://scenes/picture_room.gd" id="1_k86af"]
 [ext_resource type="Resource" uid="uid://b4mn8h64l71cf" path="res://data/score_resource.tres" id="2_6aww1"]
 [ext_resource type="ArrayMesh" uid="uid://bqtv2bk2512ux" path="res://Models/OBJ format/animal-koala.obj" id="3_bwfyf"]
+[ext_resource type="AudioStream" uid="uid://cmytvc3tbppr3" path="res://Jogo Foto/Gatografia.wav" id="3_dlnkt"]
+[ext_resource type="Script" uid="uid://csq18mnbymsby" path="res://scenes/bg_music_controller.gd" id="3_uq2wv"]
 [ext_resource type="Script" uid="uid://d2dqb184gs4k5" path="res://scenes/picture_viewport.gd" id="4_6mc56"]
+[ext_resource type="AudioStream" uid="uid://cbv31mwlq8hno" path="res://Jogo Foto/Contagem Regressiva.wav" id="4_t1ml7"]
+[ext_resource type="AudioStream" uid="uid://cb2w31xi5q4ro" path="res://Jogo Foto/Meownu.wav" id="5_uq2wv"]
 [ext_resource type="Script" uid="uid://b4toax1n7si00" path="res://scenes/picture_result_icon.gd" id="9_ntq1h"]
 [ext_resource type="Texture2D" uid="uid://bws11bdg82d4g" path="res://sprites/icon_outline_checkmark.png" id="10_6aww1"]
 [ext_resource type="Texture2D" uid="uid://chj5jqu53qciy" path="res://sprites/icon_outline_cross.png" id="11_q0x86"]
@@ -15,6 +19,10 @@
 [ext_resource type="Script" uid="uid://cwhiujyy8ansp" path="res://scenes/countdown_label.gd" id="14_01b81"]
 [ext_resource type="Texture2D" uid="uid://oifvku57jvg7" path="res://sprites/ui2.png" id="15_dlnkt"]
 [ext_resource type="PackedScene" uid="uid://c6ipdb1ma8nmv" path="res://scenes/player.tscn" id="15_jh5qs"]
+[ext_resource type="AudioStream" uid="uid://bwatnlq4tqs0x" path="res://Jogo Foto/Nota Boa.wav" id="18_q8wrx"]
+[ext_resource type="AudioStream" uid="uid://vyql51qmp8fg" path="res://Jogo Foto/Beep 2.wav" id="19_183b6"]
+[ext_resource type="AudioStream" uid="uid://omj8mvd2t7jk" path="res://Jogo Foto/Nota Ruim.wav" id="19_xoikw"]
+[ext_resource type="AudioStream" uid="uid://8dp1kju6xlnd" path="res://Jogo Foto/Batendo Foto.wav" id="23_q8wrx"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6mc56"]
 
@@ -39,9 +47,27 @@ script = ExtResource("1_k86af")
 camera_subviewport = NodePath("Control/CameraUI/SubViewportContainer/SubViewport")
 picture_score_data = ExtResource("2_6aww1")
 
+[node name="BGMusicController" type="Node" parent="." unique_id=543257298 node_paths=PackedStringArray("music_player_map")]
+script = ExtResource("3_uq2wv")
+music_player_map = {
+"countdown": NodePath("CountDownMusicPlayer"),
+"gameplay": NodePath("GameplayMusicPlayer"),
+"menu": NodePath("MenuMusicPlayer")
+}
+
+[node name="GameplayMusicPlayer" type="AudioStreamPlayer" parent="BGMusicController" unique_id=1285705414]
+stream = ExtResource("3_dlnkt")
+autoplay = true
+
+[node name="CountDownMusicPlayer" type="AudioStreamPlayer" parent="BGMusicController" unique_id=1711848733]
+stream = ExtResource("4_t1ml7")
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="BGMusicController" unique_id=1497512778]
+stream = ExtResource("5_uq2wv")
+
 [node name="CountdownTimer" type="Node" parent="." unique_id=109313675]
 script = ExtResource("13_q0x86")
-countdown_start = 5
+countdown_start = 10
 
 [node name="TopViewCamera" type="Camera3D" parent="." unique_id=799441515]
 transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 4.5, 7.5, 4.5)
@@ -221,12 +247,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("10_6aww1")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/PictureResultHud/Success" unique_id=2127892597]
+stream = ExtResource("18_q8wrx")
+
 [node name="Failure" type="TextureRect" parent="Control/PictureResultHud" unique_id=708265222]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("11_q0x86")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/PictureResultHud/Failure" unique_id=1999638717]
+stream = ExtResource("19_xoikw")
 
 [node name="Countdown Label" type="Label" parent="Control" unique_id=2143904771]
 visible = false
@@ -241,6 +273,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("14_01b81")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Countdown Label" unique_id=1521880032]
+stream = ExtResource("19_183b6")
+
 [node name="NinePatchRect" type="TextureRect" parent="Control" unique_id=1291998920]
 visible = false
 layout_mode = 0
@@ -252,9 +287,14 @@ texture = SubResource("AtlasTexture_jh5qs")
 expand_mode = 4
 stretch_mode = 4
 
+[node name="CameraShootAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1996181724]
+stream = ExtResource("23_q8wrx")
+
 [connection signal="picture_compared" from="." to="Control/PictureResultHud" method="_on_main_picture_compared"]
 [connection signal="countdown_ended" from="CountdownTimer" to="." method="_on_camera_shoot"]
+[connection signal="countdown_ended" from="CountdownTimer" to="CameraShootAudioPlayer" method="play"]
 [connection signal="countdown_started" from="CountdownTimer" to="PlayerCharacter" method="_on_countdown_timer_countdown_started"]
 [connection signal="countdown_started" from="CountdownTimer" to="Control/Countdown Label" method="_on_node_countdown_started"]
 [connection signal="countdown_updated" from="CountdownTimer" to="Control/Countdown Label" method="_on_countdown_timer_countdown_updated"]
 [connection signal="pressed" from="Control/CameraUI/CameraButtons/CameraShootButton" to="CountdownTimer" method="start_countdown"]
+[connection signal="pressed" from="Control/CameraUI/CameraButtons/CameraShootButton" to="BGMusicController" method="play_song" binds= ["countdown"]]

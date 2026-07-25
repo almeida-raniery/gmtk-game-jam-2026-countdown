@@ -2,12 +2,19 @@ extends Control
 
 @onready var succes_icon: Control = $Success
 @onready var failure_icon: Control = $Failure
+@onready var success_sound: AudioStreamPlayer = $Success/AudioStreamPlayer
+@onready var failure_sound: AudioStreamPlayer = $Failure/AudioStreamPlayer
+
 
 func _on_main_picture_compared(info: PictureScoreInfo) -> void:
 	var character_labels: Array[Label]
 	
-	succes_icon.visible = info.success
-	failure_icon.visible = !info.success
+	if info.success:
+		succes_icon.visible = true
+		success_sound.play()
+	else:
+		failure_icon.visible = true
+		failure_sound.play()
 	
 	for character_resource: CharacterScoreResource in info.character_proximity.keys():
 		var proximity = info.character_proximity[character_resource]
