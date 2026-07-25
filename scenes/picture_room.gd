@@ -2,14 +2,57 @@ extends Node3D
 
 const PICTURE_ROOT_PATH = "user://pictures"
 
-@export var camera_subviewport: SubViewport
+signal picture_compared(score: PictureScoreInfo)
 
-var moveables: Array[Node]
+@export var camera_subviewport: SubViewport
+@export var reference_rect: TextureRect
+@export var picture_score_data: PictureScoreResource
+
+var moveables: Dictionary[String, MoveableBody] = {}
 
 func _ready() -> void:
-	moveables = get_tree().get_nodes_in_group("moveable")
+	for moveable in get_tree().get_nodes_in_group("moveable"):
+		moveables[moveable.name] = moveable as MoveableBody
+		
+	reference_rect.texture = picture_score_data.reference_texture
 
 func _on_camera_shoot_button_pressed():
+	var picture_score := calculate_picture_score()
+	#save_picture_data()
+	
+	picture_compared.emit(picture_score)
+
+func get_recursive_file_path(file_name: String, extension: String = "", index: int = 0) -> String:
+	var next_file_name: String
+	
+	if index == 0:
+		next_file_name = file_name + extension
+	else:
+		next_file_name = file_name + "_" + str(index) + extension
+	
+	#print (next_file_name)
+	
+	while FileAccess.file_exists(next_file_name):
+		return get_recursive_file_path(file_name, extension, index + 1)
+	
+	return next_file_name
+
+func get_recursive_dir_path(dir_name: String, index: int = 0) -> String:
+	var next_dir_name
+	
+	if index == 0:
+		next_dir_name = dir_name
+	else:
+		next_dir_name = dir_name + "_" + str(index)
+	
+	#print (next_dir_name)
+	
+	while DirAccess.dir_exists_absolute(next_dir_name):
+		return get_recursive_dir_path(dir_name, index + 1)
+	
+	return next_dir_name
+
+func save_picture_data():
 	var picture_data: Dictionary = {}
 	var moveable_position_data: Array[Dictionary] = []
 	var data_dir_path := get_recursive_dir_path(PICTURE_ROOT_PATH + "/picture")
@@ -20,7 +63,7 @@ func _on_camera_shoot_button_pressed():
 	if not DirAccess.dir_exists_absolute(data_dir_path):
 		DirAccess.make_dir_recursive_absolute(data_dir_path)
 	
-	for moveable in moveables:
+	for moveable in moveables.values():
 		if moveable is MoveableBody:
 			var moveable_data: Dictionary[String, String] = {}
 			
@@ -41,34 +84,19 @@ func _on_camera_shoot_button_pressed():
 	
 	camera_subviewport.get_texture().get_image().save_png(image_path)
 
-func get_recursive_file_path(file_name: String, extension: String = "", index: int = 0) -> String:
-	var next_file_name: String
+func calculate_picture_score() -> PictureScoreInfo:
+	var reference_image := picture_score_data.reference_texture.get_image()
+	var metrics := reference_image.compute_image_metrics(camera_subviewport.get_texture().get_image(), true)
+	var success := metrics["mean"] as float <= picture_score_data.difference_margin
+	var character_proximities: Dictionary[CharacterScoreResource, float]
 	
-	if index == 0:
-		next_file_name = file_name + extension
-	else:
-		next_file_name = file_name + "_" + str(index) + extension
+	for character_name: String in picture_score_data.character_scores.keys():
+		var character_score := picture_score_data.character_scores[character_name]
+		var character := moveables[character_name]
+		
+		success = success and character_score.pose == character.pose
+		character_proximities[character_score] = abs(character_score.pos.x - character.position.x)
 	
-	print (next_file_name)
+	var info := PictureScoreInfo.new(1 - metrics["mean"], success,character_proximities )
 	
-	while FileAccess.file_exists(next_file_name):
-		return get_recursive_file_path(file_name, extension, index + 1)
-	
-	return next_file_name
-
-func get_recursive_dir_path(dir_name: String, index: int = 0) -> String:
-	var next_dir_name
-	
-	if index == 0:
-		next_dir_name = dir_name
-	else:
-		next_dir_name = dir_name + "_" + str(index)
-	
-	print (next_dir_name)
-	
-	while DirAccess.dir_exists_absolute(next_dir_name):
-		return get_recursive_dir_path(dir_name, index + 1)
-	
-	return next_dir_name
-
-	
+	return info

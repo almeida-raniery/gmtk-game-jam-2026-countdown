@@ -3,12 +3,12 @@ extends Node3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-var draggingCollider: CharacterBody3D
+var draggingCollider: MoveableBody
 var mousePosition: Vector3
 var doDrag = false
 
-func _input(event):
-	var intersect
+func _input(event: InputEvent):
+	var intersect: Dictionary
 	
 	if event is InputEventMouse:
 		intersect = get_mouse_intersect(event.position)
@@ -17,8 +17,8 @@ func _input(event):
 		#if intersect: mousePosition = intersect.collider.global_position
 		
 	if event is InputEventMouseButton:
-		var leftButtonPressed = event.button_index == MOUSE_BUTTON_LEFT && event.pressed
-		var leftButtonReleased = event.button_index == MOUSE_BUTTON_LEFT && !event.pressed
+		var leftButtonPressed: bool = event.button_index == MOUSE_BUTTON_LEFT && event.pressed
+		var leftButtonReleased: bool = event.button_index == MOUSE_BUTTON_LEFT && !event.pressed
 		
 		if leftButtonReleased:
 			doDrag = false
@@ -31,16 +31,23 @@ func _physics_process(delta: float) -> void:
 	if draggingCollider:
 		draggingCollider.global_position = mousePosition.clamp(Vector3(-5, 0, -4), Vector3(5, 1, 4))
 
-func drag_and_drop(intersect):
+func drag_and_drop(intersect: Dictionary):
+	if intersect.is_empty():
+		return
+	
 	var canMove = intersect.collider in get_tree().get_nodes_in_group("moveable")
+	
 	if !draggingCollider && doDrag && canMove:
 		draggingCollider = intersect.collider
+		draggingCollider.is_dragging = true
 	elif draggingCollider:
+		draggingCollider.is_dragging = false
 		draggingCollider = null
+
 	
-func get_mouse_intersect(mousePosition):
-	var currentCamera = get_viewport().get_camera_3d()
-	var params = PhysicsRayQueryParameters3D.new()
+func get_mouse_intersect(mousePosition: Vector2) -> Dictionary:
+	var currentCamera := get_viewport().get_camera_3d()
+	var params := PhysicsRayQueryParameters3D.new()
 	
 	params.from = currentCamera.project_ray_origin(mousePosition)
 	params.to = currentCamera.project_position(mousePosition, 1000)

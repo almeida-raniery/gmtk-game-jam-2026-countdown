@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PictureScoreResource" format=3 uid="uid://b4mn8h64l71cf"]
+
+[ext_resource type="Script" uid="uid://bv2fi5baoq0bq" path="res://data/character_score_resource.gd" id="1_omxvf"]
+[ext_resource type="Script" uid="uid://cniccv4g0byjl" path="res://data/picture_score_resource.gd" id="2_da0lg"]
+[ext_resource type="Texture2D" uid="uid://dnffv8tyhixiw" path="res://image.png" id="2_g85b7"]
+
+[sub_resource type="Resource" id="Resource_omxvf"]
+script = ExtResource("1_omxvf")
+pos = Vector3(0.45, 0, 0)
+metadata/_custom_type_script = "uid://bv2fi5baoq0bq"
+
+[sub_resource type="Resource" id="Resource_da0lg"]
+script = ExtResource("1_omxvf")
+pos = Vector3(0.92, 0, 0)
+metadata/_custom_type_script = "uid://bv2fi5baoq0bq"
+
+[resource]
+script = ExtResource("2_da0lg")
+character_scores = Dictionary[String, ExtResource("1_omxvf")]({
+"Bunny": SubResource("Resource_omxvf"),
+"Koala": SubResource("Resource_da0lg")
+})
+reference_texture = ExtResource("2_g85b7")
+difference_margin = 0.35
+metadata/_custom_type_script = "uid://cniccv4g0byjl"
