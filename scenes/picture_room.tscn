@@ -13,18 +13,23 @@
 [ext_resource type="Script" uid="uid://b4toax1n7si00" path="res://scenes/picture_result_icon.gd" id="9_ntq1h"]
 [ext_resource type="Texture2D" uid="uid://bws11bdg82d4g" path="res://sprites/icon_outline_checkmark.png" id="10_6aww1"]
 [ext_resource type="Texture2D" uid="uid://chj5jqu53qciy" path="res://sprites/icon_outline_cross.png" id="11_q0x86"]
+[ext_resource type="Script" uid="uid://c1qe5x0d2xi46" path="res://scenes/twin_execute_action_node.gd" id="12_mwkc5"]
 [ext_resource type="PackedScene" uid="uid://bwevouk1glpmx" path="res://scenes/gato.tscn" id="12_xoikw"]
 [ext_resource type="PackedScene" uid="uid://bp0fouv5c5m6c" path="res://scenes/gemeo_02.tscn" id="13_0xx3p"]
+[ext_resource type="AudioStream" uid="uid://dx7bg80yxvklq" path="res://Jogo Foto/Briga.wav" id="13_74l6k"]
 [ext_resource type="Script" uid="uid://cie5yc7f3q8pc" path="res://scenes/countdown_timer.gd" id="13_q0x86"]
 [ext_resource type="PackedScene" uid="uid://babs6i4dlvqrj" path="res://scenes/gemeo_01.tscn" id="13_tcm3i"]
 [ext_resource type="Script" uid="uid://cwhiujyy8ansp" path="res://scenes/countdown_label.gd" id="14_01b81"]
+[ext_resource type="Script" uid="uid://cnokbliakkglt" path="res://scenes/execute_cat_action_node.gd" id="14_d7t5x"]
 [ext_resource type="Texture2D" uid="uid://oifvku57jvg7" path="res://sprites/ui2.png" id="15_dlnkt"]
 [ext_resource type="PackedScene" uid="uid://c6ipdb1ma8nmv" path="res://scenes/player.tscn" id="15_jh5qs"]
 [ext_resource type="PackedScene" uid="uid://dlesurg2n8yoo" path="res://scenes/panda.tscn" id="16_73dql"]
-[ext_resource type="Texture2D" uid="uid://dpxse8jtf363e" path="res://picture-template-overlay_1.png" id="17_l1x4v"]
+[ext_resource type="AudioStream" uid="uid://4qytl53rkc87" path="res://Jogo Foto/Meow 2.2.wav" id="17_c46fe"]
 [ext_resource type="AudioStream" uid="uid://bwatnlq4tqs0x" path="res://Jogo Foto/Nota Boa.wav" id="18_q8wrx"]
 [ext_resource type="AudioStream" uid="uid://vyql51qmp8fg" path="res://Jogo Foto/Beep 2.wav" id="19_183b6"]
 [ext_resource type="AudioStream" uid="uid://omj8mvd2t7jk" path="res://Jogo Foto/Nota Ruim.wav" id="19_xoikw"]
+[ext_resource type="Texture2D" uid="uid://bfudnyag6he4o" path="res://sprites/pngegg.png" id="19_yf14p"]
+[ext_resource type="Texture2D" uid="uid://d4a5ckh41t6cn" path="res://picture-template-overlay_3.png" id="20_mwkc5"]
 [ext_resource type="AudioStream" uid="uid://8dp1kju6xlnd" path="res://Jogo Foto/Batendo Foto.wav" id="23_q8wrx"]
 [ext_resource type="Script" uid="uid://rqan0alxdjm3" path="res://scenes/picture_score_display.gd" id="25_0xx3p"]
 [ext_resource type="Texture2D" uid="uid://bypm5pu5kks4m" path="res://image.png" id="25_tcm3i"]
@@ -47,18 +52,11 @@ size = Vector3(1, 1, 0.5004883)
 size = Vector3(1, 1, 0.49560547)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kvlo3"]
-size = Vector3(1.0378418, 1.7636414, 0.7241211)
+size = Vector3(0.989624, 1.984374, 0.7241211)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jh5qs"]
-atlas = ExtResource("15_dlnkt")
-region = Rect2(1064, 0, 472, 480)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcm3i"]
-bg_color = Color(0.85, 0.4771333, 0.45049998, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_atxba"]
-atlas = ExtResource("27_6xonm")
-region = Rect2(272, 0, 128, 120)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mwkc5"]
+height = 2.4943848
+radius = 1.90625
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7t5x"]
 atlas = ExtResource("27_6xonm")
@@ -68,9 +66,13 @@ region = Rect2(426, 210, 108, 108)
 atlas = ExtResource("27_6xonm")
 region = Rect2(432, 420, 102, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_atxba"]
+atlas = ExtResource("27_6xonm")
+region = Rect2(272, 0, 128, 120)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xx3p"]
-atlas = ExtResource("15_dlnkt")
-region = Rect2(24, 16, 440, 560)
+atlas = ExtResource("27_6xonm")
+region = Rect2(6, 6, 228, 288)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aoxva"]
 atlas = ExtResource("15_dlnkt")
@@ -129,7 +131,6 @@ texture_albedo = ExtResource("11_q0x86")
 
 [node name="EWall" type="MeshInstance3D" parent="Walls" unique_id=1008346535]
 transform = Transform3D(-5.135981e-07, 0, -1, 0, 9.768784, 0, 11.749754, 0, -4.371139e-08, 5.8858004, 4.863922, 0.14664078)
-layers = 2
 material_override = ExtResource("9_l1x4v")
 mesh = SubResource("QuadMesh_6mc56")
 
@@ -143,7 +144,6 @@ shape = SubResource("BoxShape3D_6mc56")
 
 [node name="SWall" type="MeshInstance3D" parent="Walls" unique_id=500493533]
 transform = Transform3D(-11.749754, 0, -8.742278e-08, 0, 9.768784, 0, 1.0271962e-06, 0, -1, -0.081606865, 4.863922, 5.011184)
-layers = 2
 material_override = ExtResource("9_l1x4v")
 mesh = SubResource("QuadMesh_6mc56")
 
@@ -157,7 +157,6 @@ shape = SubResource("BoxShape3D_6mc56")
 
 [node name="NWall" type="MeshInstance3D" parent="Walls" unique_id=397218195]
 transform = Transform3D(11.749754, 0, 0, 0, 9.768784, 0, 0, 0, 1, 0, 4.863922, -4.9233065)
-layers = 2
 material_override = ExtResource("9_l1x4v")
 mesh = SubResource("QuadMesh_6mc56")
 
@@ -171,7 +170,6 @@ shape = SubResource("BoxShape3D_6mc56")
 
 [node name="WWall" type="MeshInstance3D" parent="Walls" unique_id=1174272057]
 transform = Transform3D(-5.135981e-07, 0, 1, 0, 9.768784, 0, -11.749754, 0, -4.371139e-08, -5.8604813, 4.6380124, 0)
-layers = 2
 material_override = ExtResource("9_l1x4v")
 mesh = SubResource("QuadMesh_6mc56")
 
@@ -182,36 +180,66 @@ transform = Transform3D(0.9999999, 1.5777218e-30, -2.220446e-16, 0, 0.9999999, 0
 shape = SubResource("BoxShape3D_k86af")
 
 [node name="Gemeo1" type="CharacterBody3D" parent="." unique_id=970239532 groups=["moveable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4739037, 0, 1.3762875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24382699, 0, 1.8010588)
 script = ExtResource("1_6mc56")
 
 [node name="GEMEO01" parent="Gemeo1" unique_id=1581108621 instance=ExtResource("13_tcm3i")]
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo1" unique_id=941804985]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040893555, 0.9677124, -0.13696289)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.090333, -0.137)
 shape = SubResource("BoxShape3D_kvlo3")
 
-[node name="Gemeo2" type="CharacterBody3D" parent="." unique_id=376225638 groups=["moveable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4406328, 0, 1.3762875)
+[node name="ActionArea" type="Area3D" parent="Gemeo1" unique_id=401974043]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo1/ActionArea" unique_id=1163660658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2894287, 0)
+shape = SubResource("CylinderShape3D_mwkc5")
+
+[node name="ExecuteActionNode" type="Node" parent="Gemeo1" unique_id=341424753 node_paths=PackedStringArray("fighting_cloud")]
+script = ExtResource("12_mwkc5")
+fighting_cloud = NodePath("../../FightingCloud")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Gemeo1/ExecuteActionNode" unique_id=1263374304]
+stream = ExtResource("13_74l6k")
+
+[node name="Gemeo2" type="CharacterBody3D" parent="." unique_id=376225638 groups=["moveable", "twin"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0492523, 0, 2.078727)
 script = ExtResource("1_6mc56")
 
 [node name="GEMEO02" parent="Gemeo2" unique_id=1943801341 instance=ExtResource("13_0xx3p")]
-transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, -0.032)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo2" unique_id=2144753802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040893555, 0.9677124, -0.13696289)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040893555, 0.9330406, -0.13696289)
 shape = SubResource("BoxShape3D_kvlo3")
 
 [node name="Gato" type="CharacterBody3D" parent="." unique_id=214474170 groups=["moveable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.93184876, 0, 0.15645123)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_6mc56")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gato" unique_id=605998206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04147339, 0.90847003, -0.04663086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017364502, 0.99977815, -0.04663086)
 shape = SubResource("BoxShape3D_kvlo3")
 
 [node name="GATO" parent="Gato" unique_id=114079184 instance=ExtResource("12_xoikw")]
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
+
+[node name="ActionArea" type="Area3D" parent="Gato" unique_id=407590173]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gato/ActionArea" unique_id=572582010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2894287, 0)
+shape = SubResource("CylinderShape3D_mwkc5")
+
+[node name="ExecuteActionNode" type="Node" parent="Gato" unique_id=242786429]
+script = ExtResource("14_d7t5x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Gato/ExecuteActionNode" unique_id=563185351]
+stream = ExtResource("17_c46fe")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=601839849]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 45, 0)
@@ -230,6 +258,11 @@ visible = false
 
 [node name="PANDA" parent="." unique_id=1227901571 instance=ExtResource("16_73dql")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 7.7541046)
+
+[node name="FightingCloud" type="Sprite3D" parent="." unique_id=1680122836]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.0801361, 1.5519145, 2.8817196)
+visible = false
+texture = ExtResource("19_yf14p")
 
 [node name="Control" type="Control" parent="." unique_id=1606836278]
 layout_mode = 3
@@ -292,7 +325,7 @@ offset_right = -54.0
 offset_bottom = -96.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("17_l1x4v")
+texture = ExtResource("20_mwkc5")
 
 [node name="PictureResultHud" type="Control" parent="Control/PictureOverlay" unique_id=1919818494]
 layout_mode = 1
@@ -345,18 +378,7 @@ script = ExtResource("14_01b81")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/Countdown Label" unique_id=1521880032]
 stream = ExtResource("19_183b6")
 
-[node name="NinePatchRect" type="TextureRect" parent="Control" unique_id=1291998920]
-visible = false
-layout_mode = 0
-offset_left = 1581.0
-offset_top = 695.0
-offset_right = 1896.0
-offset_bottom = 1077.0
-texture = SubResource("AtlasTexture_jh5qs")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="PictureScoreDisplay" type="PanelContainer" parent="Control" unique_id=1093538036]
+[node name="PictureScoreDisplay" type="Control" parent="Control" unique_id=573522958]
 process_mode = 2
 visible = false
 layout_mode = 1
@@ -365,7 +387,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_tcm3i")
 script = ExtResource("25_0xx3p")
 letter_badge = Dictionary[String, Texture]({
 "A": ExtResource("28_atxba"),
@@ -375,67 +396,103 @@ letter_badge = Dictionary[String, Texture]({
 "S": SubResource("AtlasTexture_atxba")
 })
 
+[node name="ColorRect" type="ColorRect" parent="Control/PictureScoreDisplay" unique_id=660515501]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.99, 0.2574, 0.45275983, 1)
+
 [node name="VboxContainer" type="VBoxContainer" parent="Control/PictureScoreDisplay" unique_id=1587007205]
-layout_mode = 2
-theme_override_constants/separation = 60
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -332.5
+offset_right = 357.5
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Title" type="Label" parent="Control/PictureScoreDisplay/VboxContainer" unique_id=1039361433]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("26_nheyi")
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 54
 text = "The Pictures Look Great"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PictureFrame" type="TextureRect" parent="Control/PictureScoreDisplay/VboxContainer" unique_id=1539666433]
 z_index = 10
-custom_minimum_size = Vector2(440, 560)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
 texture = SubResource("AtlasTexture_0xx3p")
-expand_mode = 4
+expand_mode = 3
 stretch_mode = 4
 
 [node name="PictureResult" type="TextureRect" parent="Control/PictureScoreDisplay/VboxContainer/PictureFrame" unique_id=780141528]
 z_index = -10
-layout_mode = 0
-offset_left = 14.0
-offset_top = 10.0
-offset_right = 422.0
-offset_bottom = 427.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.5
+offset_top = -225.5
+offset_right = 172.5
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("25_tcm3i")
+expand_mode = 4
+stretch_mode = 4
 
 [node name="RankingBadge" type="TextureRect" parent="Control/PictureScoreDisplay/VboxContainer/PictureFrame" unique_id=1491092256]
 layout_mode = 0
-offset_left = -94.0
-offset_top = -77.0
-offset_right = 162.0
-offset_bottom = 155.0
+offset_left = -48.5
+offset_top = -40.0
+offset_right = 105.5
+offset_bottom = 98.5
 texture = SubResource("AtlasTexture_aoxva")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="RankingLabel" type="Label" parent="Control/PictureScoreDisplay/VboxContainer/PictureFrame/RankingBadge" unique_id=1418505191]
-layout_mode = 0
-offset_left = 111.0
-offset_top = 80.0
-offset_right = 157.0
-offset_bottom = 195.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 15.5
+offset_right = 6.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.52, 0.468, 0, 1)
 theme_override_fonts/font = ExtResource("26_nheyi")
-theme_override_font_sizes/font_size = 84
+theme_override_font_sizes/font_size = 80
 text = "S"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="Control/PictureScoreDisplay/VboxContainer/PictureFrame" unique_id=196664580]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 437.0
-offset_right = 414.0
-offset_bottom = 551.0
+offset_left = 72.5
+offset_top = 380.0
+offset_right = 306.5
+offset_bottom = 415.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("26_nheyi")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 36
 text = "Score: 1200 pts"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -449,7 +506,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.94509804, 0.47058824, 0.3019608, 1)
 theme_override_fonts/font = ExtResource("26_nheyi")
-theme_override_font_sizes/font_size = 86
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("27_peq14")
 text = "Try Again"
 
@@ -457,7 +514,7 @@ text = "Try Again"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.94509804, 0.47058824, 0.3019608, 1)
 theme_override_fonts/font = ExtResource("26_nheyi")
-theme_override_font_sizes/font_size = 86
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("27_peq14")
 text = "Main Menu"
 
@@ -473,9 +530,13 @@ stream = ExtResource("23_q8wrx")
 [connection signal="picture_compared" from="." to="Control/PictureScoreDisplay" method="show_final_score"]
 [connection signal="countdown_ended" from="CountdownTimer" to="." method="_on_camera_shoot"]
 [connection signal="countdown_ended" from="CountdownTimer" to="CameraShootAudioPlayer" method="play"]
+[connection signal="countdown_ended" from="CountdownTimer" to="Gemeo1/ExecuteActionNode" method="_on_countdown_timer_countdown_ended"]
 [connection signal="countdown_started" from="CountdownTimer" to="PlayerCharacter" method="_on_countdown_timer_countdown_started"]
 [connection signal="countdown_started" from="CountdownTimer" to="Control/Countdown Label" method="_on_node_countdown_started"]
 [connection signal="countdown_updated" from="CountdownTimer" to="Control/Countdown Label" method="_on_countdown_timer_countdown_updated"]
+[connection signal="body_entered" from="Gemeo1/ActionArea" to="Gemeo1/ExecuteActionNode" method="_on_action_area_body_entered"]
+[connection signal="body_exited" from="Gemeo1/ActionArea" to="Gemeo1/ExecuteActionNode" method="_on_action_area_body_exited"]
+[connection signal="body_entered" from="Gato/ActionArea" to="Gato/ExecuteActionNode" method="_on_action_area_body_entered"]
 [connection signal="pressed" from="Control/CameraUI/CameraButtons/CameraShootButton" to="CountdownTimer" method="start_countdown"]
 [connection signal="pressed" from="Control/CameraUI/CameraButtons/CameraShootButton" to="BGMusicController" method="play_song" binds= ["countdown"]]
 [connection signal="pressed" from="Control/PictureScoreDisplay/VboxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

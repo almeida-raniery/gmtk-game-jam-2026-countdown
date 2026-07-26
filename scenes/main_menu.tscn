@@ -15,21 +15,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bqqt6")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=883566459]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1464102914]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 1.031
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 7.4799805
+offset_bottom = 907.0
 texture = ExtResource("2_wu84c")
+expand_mode = 4
+stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1880953142]
-layout_mode = 0
-offset_left = 174.0
-offset_top = 637.0
-offset_right = 647.0
-offset_bottom = 1002.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109000005
+anchor_top = 0.59000003
+anchor_right = 0.35500002
+anchor_bottom = 0.887
+offset_left = 1.719986
+offset_top = -3.2000122
+offset_right = 2.3999634
+offset_bottom = -2.960022
+grow_vertical = 0
 alignment = 1
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=136474670]

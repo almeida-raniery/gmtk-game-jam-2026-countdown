@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Control
 
 @export var letter_badge: Dictionary[String, Texture]
 
