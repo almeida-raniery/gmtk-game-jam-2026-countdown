@@ -14,7 +14,7 @@ func _input(event: InputEvent):
 	
 	if event is InputEventMouse:
 		intersect = get_mouse_intersect(event.position)
-		if intersect: mousePosition = Vector3(intersect.position.x, 0.5, intersect.position.z)
+		if intersect: mousePosition = Vector3(intersect.position.x, 0.1, intersect.position.z)
 		#snap on collider
 		#if intersect: mousePosition = intersect.collider.global_position
 		

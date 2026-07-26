@@ -47,7 +47,7 @@ size = Vector3(1, 1, 0.5004883)
 size = Vector3(1, 1, 0.49560547)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kvlo3"]
-size = Vector3(1, 0.5, 1)
+size = Vector3(1.0378418, 1.7636414, 0.7241211)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jh5qs"]
 atlas = ExtResource("15_dlnkt")
@@ -189,25 +189,25 @@ script = ExtResource("1_6mc56")
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo1" unique_id=941804985]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023010254, 0.1855469, -0.27490234)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040893555, 0.9677124, -0.13696289)
 shape = SubResource("BoxShape3D_kvlo3")
 
 [node name="Gemeo2" type="CharacterBody3D" parent="." unique_id=376225638 groups=["moveable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4406328, 0, 1.3762875)
 script = ExtResource("1_6mc56")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo2" unique_id=424011052]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023010254, 0.1855469, -0.27490234)
-shape = SubResource("BoxShape3D_kvlo3")
-
 [node name="GEMEO02" parent="Gemeo2" unique_id=1943801341 instance=ExtResource("13_0xx3p")]
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo2" unique_id=2144753802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0040893555, 0.9677124, -0.13696289)
+shape = SubResource("BoxShape3D_kvlo3")
 
 [node name="Gato" type="CharacterBody3D" parent="." unique_id=214474170 groups=["moveable"]]
 script = ExtResource("1_6mc56")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gato" unique_id=605998206]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04147339, 0.26786026, -0.04663086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04147339, 0.90847003, -0.04663086)
 shape = SubResource("BoxShape3D_kvlo3")
 
 [node name="GATO" parent="Gato" unique_id=114079184 instance=ExtResource("12_xoikw")]
