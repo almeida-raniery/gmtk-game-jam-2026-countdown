@@ -20,11 +20,20 @@
 [ext_resource type="Script" uid="uid://cwhiujyy8ansp" path="res://scenes/countdown_label.gd" id="14_01b81"]
 [ext_resource type="Texture2D" uid="uid://oifvku57jvg7" path="res://sprites/ui2.png" id="15_dlnkt"]
 [ext_resource type="PackedScene" uid="uid://c6ipdb1ma8nmv" path="res://scenes/player.tscn" id="15_jh5qs"]
+[ext_resource type="PackedScene" uid="uid://dlesurg2n8yoo" path="res://scenes/panda.tscn" id="16_73dql"]
 [ext_resource type="Texture2D" uid="uid://dpxse8jtf363e" path="res://picture-template-overlay_1.png" id="17_l1x4v"]
 [ext_resource type="AudioStream" uid="uid://bwatnlq4tqs0x" path="res://Jogo Foto/Nota Boa.wav" id="18_q8wrx"]
 [ext_resource type="AudioStream" uid="uid://vyql51qmp8fg" path="res://Jogo Foto/Beep 2.wav" id="19_183b6"]
 [ext_resource type="AudioStream" uid="uid://omj8mvd2t7jk" path="res://Jogo Foto/Nota Ruim.wav" id="19_xoikw"]
 [ext_resource type="AudioStream" uid="uid://8dp1kju6xlnd" path="res://Jogo Foto/Batendo Foto.wav" id="23_q8wrx"]
+[ext_resource type="Script" uid="uid://rqan0alxdjm3" path="res://scenes/picture_score_display.gd" id="25_0xx3p"]
+[ext_resource type="Texture2D" uid="uid://bypm5pu5kks4m" path="res://image.png" id="25_tcm3i"]
+[ext_resource type="FontFile" uid="uid://c38fk6bliodh6" path="res://fonts/rawpixel-bold.otf" id="26_nheyi"]
+[ext_resource type="Texture2D" uid="uid://cmyfthirqmky8" path="res://sprites/ui2(1).png" id="27_6xonm"]
+[ext_resource type="AudioStream" uid="uid://c3lk2f8ngowim" path="res://Jogo Foto/Vitória.wav" id="27_cbsxn"]
+[ext_resource type="StyleBox" uid="uid://by10n51agfkmj" path="res://button_style_box_texture.tres" id="27_peq14"]
+[ext_resource type="Texture2D" uid="uid://pckiewbr3n76" path="res://good_badge_atlas.tres" id="28_atxba"]
+[ext_resource type="AudioStream" uid="uid://bxqiarwu1y5y3" path="res://Jogo Foto/Derrota.wav" id="28_peq14"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6mc56"]
 
@@ -44,10 +53,34 @@ size = Vector3(1, 0.5, 1)
 atlas = ExtResource("15_dlnkt")
 region = Rect2(1064, 0, 472, 480)
 
-[node name="Main" type="Node3D" unique_id=793209605 node_paths=PackedStringArray("camera_subviewport")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcm3i"]
+bg_color = Color(0.85, 0.4771333, 0.45049998, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atxba"]
+atlas = ExtResource("27_6xonm")
+region = Rect2(272, 0, 128, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7t5x"]
+atlas = ExtResource("27_6xonm")
+region = Rect2(426, 210, 108, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwkc5"]
+atlas = ExtResource("27_6xonm")
+region = Rect2(432, 420, 102, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xx3p"]
+atlas = ExtResource("15_dlnkt")
+region = Rect2(24, 16, 440, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoxva"]
+atlas = ExtResource("15_dlnkt")
+region = Rect2(536, 0, 256, 232)
+
+[node name="Main" type="Node3D" unique_id=793209605 node_paths=PackedStringArray("camera_subviewport", "player_character")]
 script = ExtResource("1_k86af")
 camera_subviewport = NodePath("Control/CameraUI/SubViewportContainer/SubViewport")
 picture_score_data = ExtResource("2_6aww1")
+player_character = NodePath("PlayerCharacter")
 
 [node name="BGMusicController" type="Node" parent="." unique_id=543257298 node_paths=PackedStringArray("music_player_map")]
 script = ExtResource("3_uq2wv")
@@ -195,6 +228,9 @@ mouse_layer_mask = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1208894, 4.3413615)
 visible = false
 
+[node name="PANDA" parent="." unique_id=1227901571 instance=ExtResource("16_73dql")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 7.7541046)
+
 [node name="Control" type="Control" parent="." unique_id=1606836278]
 layout_mode = 3
 anchors_preset = 15
@@ -207,7 +243,7 @@ grow_vertical = 2
 
 [node name="CameraUI" type="VBoxContainer" parent="Control" unique_id=1859615672]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -244,49 +280,63 @@ text = "[ ]"
 
 [node name="PictureOverlay" type="TextureRect" parent="Control" unique_id=1574688413]
 modulate = Color(1, 1, 1, 0.45882353)
-layout_mode = 0
-offset_left = 1608.0
-offset_top = 727.0
-offset_right = 1864.0
-offset_bottom = 983.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -352.0
+offset_right = -54.0
+offset_bottom = -96.0
+grow_horizontal = 0
+grow_vertical = 0
 texture = ExtResource("17_l1x4v")
 
-[node name="PictureResultHud" type="Control" parent="Control" unique_id=1919818494]
-anchors_preset = 0
-offset_left = 1723.0
-offset_top = 756.0
-offset_right = 1763.0
-offset_bottom = 796.0
+[node name="PictureResultHud" type="Control" parent="Control/PictureOverlay" unique_id=1919818494]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -13.0
+offset_top = 29.0
+offset_right = 27.0
+offset_bottom = 69.0
+grow_horizontal = 2
 script = ExtResource("9_ntq1h")
 
-[node name="Success" type="TextureRect" parent="Control/PictureResultHud" unique_id=157147192]
+[node name="Success" type="TextureRect" parent="Control/PictureOverlay/PictureResultHud" unique_id=157147192]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("10_6aww1")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/PictureResultHud/Success" unique_id=2127892597]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/PictureOverlay/PictureResultHud/Success" unique_id=2127892597]
 stream = ExtResource("18_q8wrx")
 
-[node name="Failure" type="TextureRect" parent="Control/PictureResultHud" unique_id=708265222]
+[node name="Failure" type="TextureRect" parent="Control/PictureOverlay/PictureResultHud" unique_id=708265222]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("11_q0x86")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/PictureResultHud/Failure" unique_id=1999638717]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/PictureOverlay/PictureResultHud/Failure" unique_id=1999638717]
 stream = ExtResource("19_xoikw")
 
 [node name="Countdown Label" type="Label" parent="Control" unique_id=2143904771]
 visible = false
-layout_mode = 0
-offset_left = 539.0
-offset_top = 23.0
-offset_right = 576.0
-offset_bottom = 111.0
-theme_override_font_sizes/font_size = 64
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.5
+offset_right = 18.5
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 120
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -306,10 +356,121 @@ texture = SubResource("AtlasTexture_jh5qs")
 expand_mode = 4
 stretch_mode = 4
 
+[node name="PictureScoreDisplay" type="PanelContainer" parent="Control" unique_id=1093538036]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tcm3i")
+script = ExtResource("25_0xx3p")
+letter_badge = Dictionary[String, Texture]({
+"A": ExtResource("28_atxba"),
+"B": ExtResource("28_atxba"),
+"C": SubResource("AtlasTexture_d7t5x"),
+"F": SubResource("AtlasTexture_mwkc5"),
+"S": SubResource("AtlasTexture_atxba")
+})
+
+[node name="VboxContainer" type="VBoxContainer" parent="Control/PictureScoreDisplay" unique_id=1587007205]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Title" type="Label" parent="Control/PictureScoreDisplay/VboxContainer" unique_id=1039361433]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("26_nheyi")
+theme_override_font_sizes/font_size = 120
+text = "The Pictures Look Great"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PictureFrame" type="TextureRect" parent="Control/PictureScoreDisplay/VboxContainer" unique_id=1539666433]
+z_index = 10
+custom_minimum_size = Vector2(440, 560)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_0xx3p")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="PictureResult" type="TextureRect" parent="Control/PictureScoreDisplay/VboxContainer/PictureFrame" unique_id=780141528]
+z_index = -10
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 422.0
+offset_bottom = 427.0
+texture = ExtResource("25_tcm3i")
+
+[node name="RankingBadge" type="TextureRect" parent="Control/PictureScoreDisplay/VboxContainer/PictureFrame" unique_id=1491092256]
+layout_mode = 0
+offset_left = -94.0
+offset_top = -77.0
+offset_right = 162.0
+offset_bottom = 155.0
+texture = SubResource("AtlasTexture_aoxva")
+
+[node name="RankingLabel" type="Label" parent="Control/PictureScoreDisplay/VboxContainer/PictureFrame/RankingBadge" unique_id=1418505191]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 80.0
+offset_right = 157.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(0.52, 0.468, 0, 1)
+theme_override_fonts/font = ExtResource("26_nheyi")
+theme_override_font_sizes/font_size = 84
+text = "S"
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Control/PictureScoreDisplay/VboxContainer/PictureFrame" unique_id=196664580]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 437.0
+offset_right = 414.0
+offset_bottom = 551.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("26_nheyi")
+theme_override_font_sizes/font_size = 56
+text = "Score: 1200 pts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PictureScoreDisplay/VboxContainer" unique_id=1951706715]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="Control/PictureScoreDisplay/VboxContainer/HBoxContainer" unique_id=1771963678]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94509804, 0.47058824, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("26_nheyi")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/normal = ExtResource("27_peq14")
+text = "Try Again"
+
+[node name="MainMenuButton" type="Button" parent="Control/PictureScoreDisplay/VboxContainer/HBoxContainer" unique_id=1854914618]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94509804, 0.47058824, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("26_nheyi")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/normal = ExtResource("27_peq14")
+text = "Main Menu"
+
+[node name="SuccessVignette" type="AudioStreamPlayer" parent="Control/PictureScoreDisplay" unique_id=1741585666]
+stream = ExtResource("27_cbsxn")
+
+[node name="FailureVignette" type="AudioStreamPlayer" parent="Control/PictureScoreDisplay" unique_id=27840176]
+stream = ExtResource("28_peq14")
+
 [node name="CameraShootAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1996181724]
 stream = ExtResource("23_q8wrx")
 
-[connection signal="picture_compared" from="." to="Control/PictureResultHud" method="_on_main_picture_compared"]
+[connection signal="picture_compared" from="." to="Control/PictureScoreDisplay" method="show_final_score"]
 [connection signal="countdown_ended" from="CountdownTimer" to="." method="_on_camera_shoot"]
 [connection signal="countdown_ended" from="CountdownTimer" to="CameraShootAudioPlayer" method="play"]
 [connection signal="countdown_started" from="CountdownTimer" to="PlayerCharacter" method="_on_countdown_timer_countdown_started"]
@@ -317,3 +478,5 @@ stream = ExtResource("23_q8wrx")
 [connection signal="countdown_updated" from="CountdownTimer" to="Control/Countdown Label" method="_on_countdown_timer_countdown_updated"]
 [connection signal="pressed" from="Control/CameraUI/CameraButtons/CameraShootButton" to="CountdownTimer" method="start_countdown"]
 [connection signal="pressed" from="Control/CameraUI/CameraButtons/CameraShootButton" to="BGMusicController" method="play_song" binds= ["countdown"]]
+[connection signal="pressed" from="Control/PictureScoreDisplay/VboxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Control/PictureScoreDisplay/VboxContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

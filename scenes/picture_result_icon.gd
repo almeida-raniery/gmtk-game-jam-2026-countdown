@@ -7,7 +7,7 @@ extends Control
 
 
 func _on_main_picture_compared(info: PictureScoreInfo) -> void:
-	var character_labels: Array[Label]
+	var character_labels: Array[Label]	
 	
 	if info.success:
 		succes_icon.visible = true

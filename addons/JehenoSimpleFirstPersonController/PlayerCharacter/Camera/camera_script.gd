@@ -158,7 +158,7 @@ func _process(delta : float) -> void:
 	
 	zoom()
 	
-	mouse_mode()
+	#mouse_mode()
 	
 func tilt(delta : float) -> void:
 	if enable_forward_tilt:

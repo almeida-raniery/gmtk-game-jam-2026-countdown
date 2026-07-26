@@ -4,16 +4,24 @@
 [ext_resource type="Script" uid="uid://cniccv4g0byjl" path="res://data/picture_score_resource.gd" id="2_da0lg"]
 [ext_resource type="Texture2D" uid="uid://bypm5pu5kks4m" path="res://image.png" id="2_g85b7"]
 
+[sub_resource type="Resource" id="Resource_ia2st"]
+script = ExtResource("1_omxvf")
+pos = Vector3(-1.87, 0, 0)
+metadata/_custom_type_script = "uid://bv2fi5baoq0bq"
+
 [sub_resource type="Resource" id="Resource_da0lg"]
 script = ExtResource("1_omxvf")
+pos = Vector3(0.69, 0, 0)
 metadata/_custom_type_script = "uid://bv2fi5baoq0bq"
 
 [sub_resource type="Resource" id="Resource_g85b7"]
 script = ExtResource("1_omxvf")
+pos = Vector3(-0.58, 0, 0)
 metadata/_custom_type_script = "uid://bv2fi5baoq0bq"
 
-[sub_resource type="Resource" id="Resource_ia2st"]
+[sub_resource type="Resource" id="Resource_d28ow"]
 script = ExtResource("1_omxvf")
+pos = Vector3(1.97, 0, 0)
 metadata/_custom_type_script = "uid://bv2fi5baoq0bq"
 
 [resource]
@@ -21,7 +29,8 @@ script = ExtResource("2_da0lg")
 character_scores = Dictionary[String, ExtResource("1_omxvf")]({
 "Gato": SubResource("Resource_ia2st"),
 "Gemeo1": SubResource("Resource_da0lg"),
-"Gemeo2": SubResource("Resource_g85b7")
+"Gemeo2": SubResource("Resource_g85b7"),
+"Player": SubResource("Resource_d28ow")
 })
 reference_texture = ExtResource("2_g85b7")
 difference_margin = 2.5
