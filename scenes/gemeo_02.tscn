@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bp0fouv5c5m6c"]
+
+[ext_resource type="PackedScene" uid="uid://bntab5kmxr0y5" path="res://Characters_Models/GEMEO02/GEMEO02.fbx" id="1_v8hik"]
+[ext_resource type="Material" uid="uid://bx5f767nevku" path="res://purple_placeholder_mat.tres" id="2_ubool"]
+[ext_resource type="Material" uid="uid://ckjgo8637ow6j" path="res://black_placeholder_mat.tres" id="3_lnmat"]
+
+[node name="GEMEO02" unique_id=1943801341 instance=ExtResource("1_v8hik")]
+
+[node name="CABELO01_L" parent="." index="0" unique_id=1745394902]
+material_override = ExtResource("2_ubool")
+
+[node name="CABELO01_R" parent="." index="1" unique_id=1673390461]
+material_override = ExtResource("2_ubool")
+
+[node name="CABELO02_L" parent="." index="2" unique_id=2053747197]
+material_override = ExtResource("2_ubool")
+
+[node name="CABELO02_R" parent="." index="3" unique_id=1048709380]
+material_override = ExtResource("2_ubool")
+
+[node name="CORPO_001" parent="." index="4" unique_id=1307921781]
+material_override = ExtResource("2_ubool")
+
+[node name="HEAD" parent="." index="8" unique_id=1989417412]
+material_override = ExtResource("2_ubool")
+
+[node name="ORELHA_L" parent="." index="11" unique_id=2051850642]
+material_override = ExtResource("2_ubool")
+
+[node name="ORELHA_R" parent="." index="12" unique_id=182569259]
+material_override = ExtResource("2_ubool")
+
+[node name="PUPILA_L" parent="." index="13" unique_id=1944913353]
+material_override = ExtResource("3_lnmat")
+
+[node name="PUPILA_R" parent="." index="14" unique_id=2084709456]
+material_override = ExtResource("3_lnmat")

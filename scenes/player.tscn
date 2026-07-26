@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://blt7dest23fk0" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/StateMachine/walk_state_script.gd" id="5_bydtv"]
 [ext_resource type="Script" uid="uid://dvu58wf01wils" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/StateMachine/jump_state_script.gd" id="7_5jn15"]
 [ext_resource type="Script" uid="uid://bh3rdvokmrar1" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/StateMachine/inair_state_script.gd" id="8_w2wq5"]
+[ext_resource type="PackedScene" uid="uid://dlesurg2n8yoo" path="res://scenes/panda.tscn" id="8_y4r1p"]
 [ext_resource type="Script" uid="uid://b0fbr48rbvn27" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/Camera/camera_script.gd" id="9_x6xif"]
 [ext_resource type="Script" uid="uid://dx02l6p6behb8" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/HUD/hud_script.gd" id="10_2they"]
 [ext_resource type="Texture2D" uid="uid://cc2gr21tqe3wt" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/HUD/crosshair.png" id="11_bkj7j"]
@@ -22,15 +23,10 @@ point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5yjma"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bkys"]
-albedo_color = Color(0.196078, 0.223529, 1, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_p2iaj"]
-
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=307017552 groups=["PlayerCharacter"]]
 process_mode = 4
-visible = false
 collision_layer = 2
+collision_mask = 3
 floor_block_on_wall = false
 floor_max_angle = 1.13446
 floor_snap_length = 0.0
@@ -38,7 +34,10 @@ platform_floor_layers = 4278190081
 script = ExtResource("1_txqg3")
 desired_move_speed_curve = SubResource("Curve_2tsxa")
 in_air_move_speed_curve = SubResource("Curve_br1r7")
-walk_speed = 7.0
+base_model_height = 0.5
+walk_speed = 5.0
+walk_accel = 8.0
+walk_deccel = 12.0
 
 [node name="StateMachine" type="Node" parent="." unique_id=931857651 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -61,10 +60,11 @@ metadata/_custom_type_script = "uid://dvu58wf01wils"
 script = ExtResource("8_w2wq5")
 metadata/_custom_type_script = "uid://bh3rdvokmrar1"
 
-[node name="CameraHolder" type="Node3D" parent="." unique_id=1750117354]
+[node name="CameraHolder" type="Node3D" parent="." unique_id=1750117354 node_paths=PackedStringArray("model")]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.55, 0)
 script = ExtResource("9_x6xif")
+model = NodePath("../PANDA")
 enable_forward_tilt = false
 enable_side_tilt = false
 enable_headbob = false
@@ -80,11 +80,8 @@ far = 1000.0
 unique_name_in_owner = true
 shape = SubResource("CapsuleShape3D_5yjma")
 
-[node name="Model" type="MeshInstance3D" parent="." unique_id=2093114359]
-unique_name_in_owner = true
-layers = 2
-material_override = SubResource("StandardMaterial3D_6bkys")
-mesh = SubResource("CapsuleMesh_p2iaj")
+[node name="PANDA" parent="." unique_id=1227901571 instance=ExtResource("8_y4r1p")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0, -0.9448906, 0)
 
 [node name="Raycasts" type="Node3D" parent="." unique_id=2079423533]
 

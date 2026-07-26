@@ -65,7 +65,7 @@ var default_input_actions : Dictionary
 #references variables
 @onready var cam_holder: CameraObject = %CameraHolder
 @onready var cam: Camera3D = %Camera
-@onready var model: MeshInstance3D = %Model
+@onready var model: Node3D = $PANDA
 @onready var hitbox: CollisionShape3D = %Hitbox
 @onready var state_machine: StateMachine = %StateMachine
 @onready var hud: HUD = %HUD

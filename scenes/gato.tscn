@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bwevouk1glpmx"]
+
+[ext_resource type="PackedScene" uid="uid://bgswttrbwaurf" path="res://Characters_Models/GATO/GATO.fbx" id="1_874ei"]
+[ext_resource type="Material" uid="uid://3vxecejllcnb" path="res://orange_placeholder_mat.tres" id="2_85aii"]
+[ext_resource type="Material" uid="uid://ckjgo8637ow6j" path="res://black_placeholder_mat.tres" id="3_djawk"]
+
+[node name="GATO" unique_id=114079184 instance=ExtResource("1_874ei")]
+
+[node name="GATO_CORPO" parent="." index="0" unique_id=1342918474]
+material_override = ExtResource("2_85aii")
+
+[node name="GATO_HEAD" parent="." index="1" unique_id=394695246]
+material_override = ExtResource("2_85aii")
+
+[node name="GATO_OLHO_L" parent="." index="5" unique_id=291987900]
+material_override = ExtResource("3_djawk")
+
+[node name="GATO_OLHO_R" parent="." index="6" unique_id=571279018]
+material_override = ExtResource("3_djawk")
+
+[node name="GATO_ORELHA_L" parent="." index="7" unique_id=1556849882]
+material_override = ExtResource("2_85aii")
+
+[node name="GATO_ORELHA_R" parent="." index="8" unique_id=300335273]
+material_override = ExtResource("2_85aii")
+
+[node name="GATO_TAIL" parent="." index="9" unique_id=987478950]
+material_override = ExtResource("2_85aii")

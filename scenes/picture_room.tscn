@@ -2,23 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cbb1ghhd4u6gm" path="res://scenes/draggable_body.gd" id="1_6mc56"]
 [ext_resource type="Script" uid="uid://ud4gofihb3ew" path="res://scenes/drag_n_drop_controller.gd" id="1_erv0l"]
-[ext_resource type="ArrayMesh" uid="uid://g1u5rq1ekmjr" path="res://Models/OBJ format/animal-bunny.obj" id="1_g3mmq"]
 [ext_resource type="Script" uid="uid://dlay6khifsmue" path="res://scenes/picture_room.gd" id="1_k86af"]
 [ext_resource type="Resource" uid="uid://b4mn8h64l71cf" path="res://data/score_resource.tres" id="2_6aww1"]
-[ext_resource type="ArrayMesh" uid="uid://bqtv2bk2512ux" path="res://Models/OBJ format/animal-koala.obj" id="3_bwfyf"]
 [ext_resource type="AudioStream" uid="uid://cmytvc3tbppr3" path="res://Jogo Foto/Gatografia.wav" id="3_dlnkt"]
 [ext_resource type="Script" uid="uid://csq18mnbymsby" path="res://scenes/bg_music_controller.gd" id="3_uq2wv"]
 [ext_resource type="Script" uid="uid://d2dqb184gs4k5" path="res://scenes/picture_viewport.gd" id="4_6mc56"]
 [ext_resource type="AudioStream" uid="uid://cbv31mwlq8hno" path="res://Jogo Foto/Contagem Regressiva.wav" id="4_t1ml7"]
 [ext_resource type="AudioStream" uid="uid://cb2w31xi5q4ro" path="res://Jogo Foto/Meownu.wav" id="5_uq2wv"]
+[ext_resource type="Material" uid="uid://ljsul32816n0" path="res://light_yellow_placeholder_mat.tres" id="9_l1x4v"]
 [ext_resource type="Script" uid="uid://b4toax1n7si00" path="res://scenes/picture_result_icon.gd" id="9_ntq1h"]
 [ext_resource type="Texture2D" uid="uid://bws11bdg82d4g" path="res://sprites/icon_outline_checkmark.png" id="10_6aww1"]
 [ext_resource type="Texture2D" uid="uid://chj5jqu53qciy" path="res://sprites/icon_outline_cross.png" id="11_q0x86"]
-[ext_resource type="Texture2D" uid="uid://chokge5ov21wm" path="res://picture-template-overlay_2.png" id="12_jh5qs"]
+[ext_resource type="PackedScene" uid="uid://bwevouk1glpmx" path="res://scenes/gato.tscn" id="12_xoikw"]
+[ext_resource type="PackedScene" uid="uid://bp0fouv5c5m6c" path="res://scenes/gemeo_02.tscn" id="13_0xx3p"]
 [ext_resource type="Script" uid="uid://cie5yc7f3q8pc" path="res://scenes/countdown_timer.gd" id="13_q0x86"]
+[ext_resource type="PackedScene" uid="uid://babs6i4dlvqrj" path="res://scenes/gemeo_01.tscn" id="13_tcm3i"]
 [ext_resource type="Script" uid="uid://cwhiujyy8ansp" path="res://scenes/countdown_label.gd" id="14_01b81"]
 [ext_resource type="Texture2D" uid="uid://oifvku57jvg7" path="res://sprites/ui2.png" id="15_dlnkt"]
 [ext_resource type="PackedScene" uid="uid://c6ipdb1ma8nmv" path="res://scenes/player.tscn" id="15_jh5qs"]
+[ext_resource type="Texture2D" uid="uid://dpxse8jtf363e" path="res://picture-template-overlay_1.png" id="17_l1x4v"]
 [ext_resource type="AudioStream" uid="uid://bwatnlq4tqs0x" path="res://Jogo Foto/Nota Boa.wav" id="18_q8wrx"]
 [ext_resource type="AudioStream" uid="uid://vyql51qmp8fg" path="res://Jogo Foto/Beep 2.wav" id="19_183b6"]
 [ext_resource type="AudioStream" uid="uid://omj8mvd2t7jk" path="res://Jogo Foto/Nota Ruim.wav" id="19_xoikw"]
@@ -95,6 +97,7 @@ texture_albedo = ExtResource("11_q0x86")
 [node name="EWall" type="MeshInstance3D" parent="Walls" unique_id=1008346535]
 transform = Transform3D(-5.135981e-07, 0, -1, 0, 9.768784, 0, 11.749754, 0, -4.371139e-08, 5.8858004, 4.863922, 0.14664078)
 layers = 2
+material_override = ExtResource("9_l1x4v")
 mesh = SubResource("QuadMesh_6mc56")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/EWall" unique_id=1934412687]
@@ -108,6 +111,7 @@ shape = SubResource("BoxShape3D_6mc56")
 [node name="SWall" type="MeshInstance3D" parent="Walls" unique_id=500493533]
 transform = Transform3D(-11.749754, 0, -8.742278e-08, 0, 9.768784, 0, 1.0271962e-06, 0, -1, -0.081606865, 4.863922, 5.011184)
 layers = 2
+material_override = ExtResource("9_l1x4v")
 mesh = SubResource("QuadMesh_6mc56")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/SWall" unique_id=474564543]
@@ -121,6 +125,7 @@ shape = SubResource("BoxShape3D_6mc56")
 [node name="NWall" type="MeshInstance3D" parent="Walls" unique_id=397218195]
 transform = Transform3D(11.749754, 0, 0, 0, 9.768784, 0, 0, 0, 1, 0, 4.863922, -4.9233065)
 layers = 2
+material_override = ExtResource("9_l1x4v")
 mesh = SubResource("QuadMesh_6mc56")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/NWall" unique_id=1043674669]
@@ -134,6 +139,7 @@ shape = SubResource("BoxShape3D_6mc56")
 [node name="WWall" type="MeshInstance3D" parent="Walls" unique_id=1174272057]
 transform = Transform3D(-5.135981e-07, 0, 1, 0, 9.768784, 0, -11.749754, 0, -4.371139e-08, -5.8604813, 4.6380124, 0)
 layers = 2
+material_override = ExtResource("9_l1x4v")
 mesh = SubResource("QuadMesh_6mc56")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls/WWall" unique_id=533339657]
@@ -142,26 +148,37 @@ mesh = SubResource("QuadMesh_6mc56")
 transform = Transform3D(0.9999999, 1.5777218e-30, -2.220446e-16, 0, 0.9999999, 0, 1.2505552e-12, -7.105418e-15, 0.9999986, 0, 0, -0.25219727)
 shape = SubResource("BoxShape3D_k86af")
 
-[node name="Koala" type="CharacterBody3D" parent="." unique_id=970239532 groups=["moveable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9846568, 0, 1.3762875)
+[node name="Gemeo1" type="CharacterBody3D" parent="." unique_id=970239532 groups=["moveable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4739037, 0, 1.3762875)
 script = ExtResource("1_6mc56")
 
-[node name="AnimalBunny2" type="MeshInstance3D" parent="Koala" unique_id=2068435649]
-mesh = ExtResource("3_bwfyf")
+[node name="GEMEO01" parent="Gemeo1" unique_id=1581108621 instance=ExtResource("13_tcm3i")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Koala" unique_id=941804985]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo1" unique_id=941804985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023010254, 0.1855469, -0.27490234)
 shape = SubResource("BoxShape3D_kvlo3")
 
-[node name="Bunny" type="CharacterBody3D" parent="." unique_id=214474170 groups=["moveable"]]
+[node name="Gemeo2" type="CharacterBody3D" parent="." unique_id=376225638 groups=["moveable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4406328, 0, 1.3762875)
 script = ExtResource("1_6mc56")
 
-[node name="AnimalBunny2" type="MeshInstance3D" parent="Bunny" unique_id=755158091]
-mesh = ExtResource("1_g3mmq")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo2" unique_id=424011052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023010254, 0.1855469, -0.27490234)
+shape = SubResource("BoxShape3D_kvlo3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bunny" unique_id=605998206]
+[node name="GEMEO02" parent="Gemeo2" unique_id=1943801341 instance=ExtResource("13_0xx3p")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
+
+[node name="Gato" type="CharacterBody3D" parent="." unique_id=214474170 groups=["moveable"]]
+script = ExtResource("1_6mc56")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gato" unique_id=605998206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04147339, 0.26786026, -0.04663086)
 shape = SubResource("BoxShape3D_kvlo3")
+
+[node name="GATO" parent="Gato" unique_id=114079184 instance=ExtResource("12_xoikw")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=601839849]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 45, 0)
@@ -176,6 +193,7 @@ mouse_layer_mask = 1
 
 [node name="PlayerCharacter" parent="." unique_id=307017552 instance=ExtResource("15_jh5qs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1208894, 4.3413615)
+visible = false
 
 [node name="Control" type="Control" parent="." unique_id=1606836278]
 layout_mode = 3
@@ -225,12 +243,13 @@ theme_override_font_sizes/font_size = 32
 text = "[ ]"
 
 [node name="PictureOverlay" type="TextureRect" parent="Control" unique_id=1574688413]
+modulate = Color(1, 1, 1, 0.45882353)
 layout_mode = 0
 offset_left = 1608.0
 offset_top = 727.0
 offset_right = 1864.0
 offset_bottom = 983.0
-texture = ExtResource("12_jh5qs")
+texture = ExtResource("17_l1x4v")
 
 [node name="PictureResultHud" type="Control" parent="Control" unique_id=1919818494]
 anchors_preset = 0

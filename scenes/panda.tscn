@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dlesurg2n8yoo"]
+
+[ext_resource type="PackedScene" uid="uid://cvscxy18hgcga" path="res://Characters_Models/PANDA/PANDA.fbx" id="1_228n7"]
+[ext_resource type="Material" uid="uid://le3m83k3pggj" path="res://blue_placeholder_mat.tres" id="2_whtoq"]
+[ext_resource type="Material" uid="uid://ckjgo8637ow6j" path="res://black_placeholder_mat.tres" id="3_265ov"]
+
+[node name="PANDA" unique_id=1227901571 instance=ExtResource("1_228n7")]
+
+[node name="PANDA_CORPO" parent="." index="0" unique_id=1414283962]
+layers = 2
+material_override = ExtResource("2_whtoq")
+
+[node name="PANDA_HEAD" parent="." index="1" unique_id=1259926614]
+layers = 2
+material_override = ExtResource("2_whtoq")
+
+[node name="PANDA_MAO_L" parent="." index="2" unique_id=364232176]
+layers = 2
+
+[node name="PANDA_MAO_L_001" parent="." index="3" unique_id=1380201793]
+layers = 2
+
+[node name="PANDA_MAO_R" parent="." index="4" unique_id=1705398563]
+layers = 2
+
+[node name="PANDA_ORELHA_L" parent="." index="5" unique_id=187228268]
+layers = 2
+
+[node name="PANDA_ORELHA_R" parent="." index="6" unique_id=1584323947]
+layers = 2
+material_override = ExtResource("2_whtoq")
+
+[node name="PANDA_PUPILA_L" parent="." index="7" unique_id=1072552984]
+layers = 2
+material_override = ExtResource("3_265ov")
+
+[node name="PANDA_PUPILA_L_001" parent="." index="8" unique_id=1134594904]
+layers = 2
+material_override = ExtResource("3_265ov")
+
+[node name="PANDA_TAIL" parent="." index="9" unique_id=302047091]
+layers = 2

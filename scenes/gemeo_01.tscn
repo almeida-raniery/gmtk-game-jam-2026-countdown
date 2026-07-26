@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://babs6i4dlvqrj"]
+
+[ext_resource type="PackedScene" uid="uid://c8koum6vg6cwm" path="res://Characters_Models/GEMEO01/GEMEO01.fbx" id="1_7yihw"]
+[ext_resource type="Material" uid="uid://bx5f767nevku" path="res://purple_placeholder_mat.tres" id="2_q4x76"]
+[ext_resource type="Material" uid="uid://ckjgo8637ow6j" path="res://black_placeholder_mat.tres" id="3_q4x76"]
+
+[node name="GEMEO01" unique_id=1581108621 instance=ExtResource("1_7yihw")]
+
+[node name="CABELO01" parent="." index="0" unique_id=361510493]
+material_override = ExtResource("2_q4x76")
+
+[node name="CABELO02" parent="." index="1" unique_id=699671490]
+material_override = ExtResource("2_q4x76")
+
+[node name="CORPO" parent="." index="2" unique_id=1891163154]
+material_override = ExtResource("2_q4x76")
+
+[node name="HEAD_001" parent="." index="6" unique_id=1971135794]
+material_override = ExtResource("2_q4x76")
+
+[node name="ORELHA_L_001" parent="." index="9" unique_id=542931556]
+material_override = ExtResource("2_q4x76")
+
+[node name="ORELHA_R_001" parent="." index="10" unique_id=657308487]
+material_override = ExtResource("2_q4x76")
+
+[node name="PUPILA_L_001" parent="." index="11" unique_id=1831320806]
+material_override = ExtResource("3_q4x76")
+
+[node name="PUPILA_R_001" parent="." index="12" unique_id=1451165173]
+material_override = ExtResource("3_q4x76")
