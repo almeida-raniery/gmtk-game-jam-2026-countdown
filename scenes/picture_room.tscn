@@ -19,10 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bm8deqmhohw1d" path="res://Models/GLB format/Characters_Models/GATO/GATO.glb" id="17_183b6"]
 [ext_resource type="PackedScene" uid="uid://b3pcc62rfwj2e" path="res://Models/GLB format/Characters_Models/GEMEO02/Gemeo02.glb" id="18_ia4yj"]
 [ext_resource type="PackedScene" uid="uid://b5km8uii6gb4h" path="res://Models/GLB format/Characters_Models/PANDA/PANDA.glb" id="19_0w1ul"]
-[ext_resource type="PackedScene" uid="uid://q3jniflfjuos" path="res://Models/GLB format/Cenario/SCENARIO_GAMEJAM.fbx" id="20_q8wrx"]
-[ext_resource type="Material" uid="uid://lbox2o7nry5b" path="res://Models/GLB format/Cenario/ROOM.tres" id="21_xoikw"]
-[ext_resource type="Material" uid="uid://dcag84ldnpnww" path="res://Models/GLB format/Cenario/ROOM.material" id="22_l1x4v"]
-[ext_resource type="Material" uid="uid://dqe7t5vwdknti" path="res://Models/GLB format/Cenario/MATERIAL.tres" id="23_tcm3i"]
+[ext_resource type="PackedScene" uid="uid://swnftociyg6e" path="res://Models/GLB format/Room/theRoom.glb" id="20_183b6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6mc56"]
 
@@ -272,59 +269,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 52.8
 [node name="PANDA" parent="." unique_id=2106785289 instance=ExtResource("19_0w1ul")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 57.149994, 3.7195034, 0.9086108)
 
-[node name="SCENARIO_GAMEJAM" parent="." unique_id=902786193 instance=ExtResource("20_q8wrx")]
-transform = Transform3D(5.2900114, 0, 0, 0, 5.2900114, 0, 0, 0, 5.2900114, 47.32829, 0, 4.44989)
-
-[node name="ABAJOUR" parent="SCENARIO_GAMEJAM" index="0" unique_id=57487059]
-material_override = ExtResource("21_xoikw")
-
-[node name="BOOK" parent="SCENARIO_GAMEJAM" index="1" unique_id=386979062]
-material_override = ExtResource("21_xoikw")
-
-[node name="BOOK2" parent="SCENARIO_GAMEJAM" index="2" unique_id=1333264453]
-material_override = ExtResource("21_xoikw")
-
-[node name="BOOK3" parent="SCENARIO_GAMEJAM" index="3" unique_id=1602897006]
-material_override = ExtResource("21_xoikw")
-
-[node name="BOOK4" parent="SCENARIO_GAMEJAM" index="4" unique_id=887481149]
-material_override = ExtResource("21_xoikw")
-
-[node name="CHEST_LONG" parent="SCENARIO_GAMEJAM" index="5" unique_id=1436659494]
-material_override = ExtResource("21_xoikw")
-
-[node name="CHEST_SHORT" parent="SCENARIO_GAMEJAM" index="6" unique_id=21266739]
-material_override = ExtResource("21_xoikw")
-
-[node name="Cube" parent="SCENARIO_GAMEJAM" index="7" unique_id=1182629927]
-material_override = ExtResource("21_xoikw")
-
-[node name="PAINT" parent="SCENARIO_GAMEJAM" index="8" unique_id=1044095539]
-material_override = ExtResource("21_xoikw")
-
-[node name="PORTRAIT" parent="SCENARIO_GAMEJAM" index="9" unique_id=1958310836]
-material_override = ExtResource("21_xoikw")
-
-[node name="ROOM" parent="SCENARIO_GAMEJAM" index="10" unique_id=214197938]
-material_override = ExtResource("22_l1x4v")
-
-[node name="SHELF_LONG" parent="SCENARIO_GAMEJAM" index="11" unique_id=783406510]
-material_override = ExtResource("21_xoikw")
-
-[node name="SHELF_SHORT" parent="SCENARIO_GAMEJAM" index="12" unique_id=1320131409]
-material_override = ExtResource("21_xoikw")
-
-[node name="SMALL_PAINT" parent="SCENARIO_GAMEJAM" index="13" unique_id=927067692]
-material_override = ExtResource("21_xoikw")
-
-[node name="SOFA" parent="SCENARIO_GAMEJAM" index="14" unique_id=473811193]
-material_override = ExtResource("23_tcm3i")
-
-[node name="TABLE" parent="SCENARIO_GAMEJAM" index="15" unique_id=1874292349]
-material_override = ExtResource("21_xoikw")
-
-[node name="VASE" parent="SCENARIO_GAMEJAM" index="16" unique_id=446748427]
-material_override = ExtResource("21_xoikw")
+[node name="theRoom" parent="." unique_id=95622986 instance=ExtResource("20_183b6")]
+transform = Transform3D(7.7990713, 0, 0, 0, 7.7990713, 0, 0, 0, 7.7990713, 53.196007, -3.8146973e-06, 11.296513)
 
 [connection signal="picture_compared" from="." to="Control/PictureResultHud" method="_on_main_picture_compared"]
 [connection signal="countdown_ended" from="CountdownTimer" to="." method="_on_camera_shoot"]
@@ -337,4 +283,4 @@ material_override = ExtResource("21_xoikw")
 [editable path="GATO"]
 [editable path="Gemeo02"]
 [editable path="PANDA"]
-[editable path="SCENARIO_GAMEJAM"]
+[editable path="theRoom"]
