@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://mw7s4m5vs17n"]
+
+[ext_resource type="ArrayMesh" uid="uid://br7bshuu3eqyl" path="res://Models/GLB format/Cenario/camera.tres" id="1_k0jgs"]
+[ext_resource type="ArrayMesh" uid="uid://cl5r2fea7y6vd" path="res://Models/GLB format/Cenario/chest_1.tres" id="2_yea3x"]
+[ext_resource type="ArrayMesh" uid="uid://byoyxiwyvyagt" path="res://Models/GLB format/Cenario/chest_2.tres" id="3_5a5cm"]
+[ext_resource type="ArrayMesh" uid="uid://cuo3bpuk3ucl1" path="res://Models/GLB format/Cenario/lamp.tres" id="4_qwtci"]
+[ext_resource type="ArrayMesh" uid="uid://b3deui7f2raxn" path="res://Models/GLB format/Cenario/sofa_frame.tres" id="5_hflrr"]
+[ext_resource type="ArrayMesh" uid="uid://b52hu7emvpxpj" path="res://Models/GLB format/Cenario/table.tres" id="6_dcr84"]
+[ext_resource type="ArrayMesh" uid="uid://com0ug2agnfok" path="res://Models/GLB format/Cenario/vase.tres" id="7_q3ysa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0jgs"]
+size = Vector3(0.77853394, 0.5105591, 0.49438477)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yea3x"]
+size = Vector3(0.53863525, 0.5352173, 0.4984131)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ul8a0"]
+radius = 0.087402344
+height = 1.289917
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a5cm"]
+size = Vector3(1.5933838, 0.43778992, 0.95292664)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hflrr"]
+size = Vector3(1.5933838, 0.86530685, 0.10104942)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dcr84"]
+size = Vector3(0.18665504, 0.64449537, 1.0522399)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3ysa"]
+size = Vector3(0.19992304, 0.64449537, 1.0570617)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwtci"]
+size = Vector3(0.9312744, 0.3972168, 0.730896)
+
+[node name="Node3D" type="Node3D" unique_id=1984530390]
+
+[node name="Camera" type="MeshInstance3D" parent="." unique_id=810663276]
+mesh = ExtResource("1_k0jgs")
+
+[node name="Chest1" type="MeshInstance3D" parent="." unique_id=171730634]
+mesh = ExtResource("2_yea3x")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chest1" unique_id=1420001413]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chest1/StaticBody3D" unique_id=483579878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0039520264, 0.27389526, 0.0013427734)
+shape = SubResource("BoxShape3D_k0jgs")
+
+[node name="Chest2" type="MeshInstance3D" parent="." unique_id=111600524]
+mesh = ExtResource("3_5a5cm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chest2" unique_id=859741918]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chest2/StaticBody3D" unique_id=1061479949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0022888184, 0.26712036, 0.0021362305)
+shape = SubResource("BoxShape3D_yea3x")
+
+[node name="Lamp" type="MeshInstance3D" parent="." unique_id=1963725706]
+mesh = ExtResource("4_qwtci")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Lamp" unique_id=929785199]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lamp/StaticBody3D" unique_id=1976252547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64556885, 0)
+shape = SubResource("CapsuleShape3D_ul8a0")
+
+[node name="SofaFrame" type="MeshInstance3D" parent="." unique_id=1287664064]
+mesh = ExtResource("5_hflrr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SofaFrame" unique_id=189759164]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SofaFrame/StaticBody3D" unique_id=547055537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003967285, 0.2182846, 0.047828674)
+shape = SubResource("BoxShape3D_5a5cm")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SofaFrame/StaticBody3D" unique_id=303723354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005493164, 0.4341793, -0.48068714)
+shape = SubResource("BoxShape3D_hflrr")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="SofaFrame/StaticBody3D" unique_id=1495967775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8993101, 0.3254071, -0.00415349)
+shape = SubResource("BoxShape3D_dcr84")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="SofaFrame/StaticBody3D" unique_id=382075133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8931844, 0.3254071, -0.0039947033)
+shape = SubResource("BoxShape3D_q3ysa")
+
+[node name="Table" type="MeshInstance3D" parent="." unique_id=1368071030]
+mesh = ExtResource("6_dcr84")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Table" unique_id=1131883061]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table/StaticBody3D" unique_id=1492968626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012817383, 0.19909668, 0.0011291504)
+shape = SubResource("BoxShape3D_qwtci")
+
+[node name="Vase" type="MeshInstance3D" parent="." unique_id=521160519]
+mesh = ExtResource("7_q3ysa")

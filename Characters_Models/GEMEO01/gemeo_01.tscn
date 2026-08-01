@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://bisuegt11t8e"]
+
+[ext_resource type="PackedScene" uid="uid://cccp2krvkcj0p" path="res://Models/GLB format/Characters_Models/GEMEO01/Gemeo01.glb" id="1_oga43"]
+
+[node name="Gemeo01" unique_id=151333570 instance=ExtResource("1_oga43")]
+
+[node name="Object_001" parent="." index="0" unique_id=1567554572]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Object_001" index="0" unique_id=295032814]
+bones/1/rotation = Quaternion(0.7018955, 5.897356e-11, 1.1388858e-09, 0.71228)
+bones/1/scale = Vector3(1.0380495, 1.0087358, 1.0000225)
+bones/2/position = Vector3(-1.3860751, 1.3496431, -0.19335602)
+bones/2/rotation = Quaternion(0.9999997, 0.00020408275, 0.00020407898, -0.00081948895)
+bones/3/position = Vector3(1.3744233, 1.3496431, -0.19335596)
+bones/3/rotation = Quaternion(0.9999997, 0.00020408275, 0.00020407898, -0.00081948895)
+bones/4/rotation = Quaternion(-0.006773973, 4.5289023e-10, 2.661077e-10, 0.9999771)
+bones/5/position = Vector3(-0.82342166, 1.9299344, -0.00408339)
+bones/5/rotation = Quaternion(0.011847708, 0.0050903554, 0.92186874, 0.38728762)
+bones/6/position = Vector3(0.8234215, 1.9299345, -0.004083386)
+bones/6/rotation = Quaternion(-0.0062462953, 0.0017414547, 0.92296153, -0.38483772)
+bones/8/position = Vector3(1.7989315e-07, 7.085283e-07, -0.118967526)
+bones/10/position = Vector3(-1.6267387e-07, 7.0617614e-07, -0.118967526)
+bones/11/position = Vector3(3.1966025e-09, 0.81963664, -1.3721232)
+bones/12/position = Vector3(-0.52885264, 1.0739968, -0.9225859)
+bones/13/position = Vector3(0.5288527, 1.0739968, -0.9225859)
+
+[node name="Hand_L" parent="Object_001/Skeleton3D" index="0" unique_id=864609732]
+transform = Transform3D(1.0380492, 0.00042404453, 0.00042333902, 0.0004174491, -1.0086461, -0.013279483, 0.000402311, 0.01342404, -0.99993396, -1.4388145, 1.358394, -0.21366821)
+
+[node name="MAO_L_001" parent="Object_001/Skeleton3D/Hand_L" index="0" unique_id=2121648356]
+transform = Transform3D(0.9999999, 0.00040789245, 0.00040856152, 0.00040856146, -0.9999987, -0.0016389043, 0.0004078924, 0.001639071, -0.9999987, 1.3227187, 1.1398383, -0.18574528)
+
+[node name="Hand_R" parent="Object_001/Skeleton3D" index="1" unique_id=82045534]
+transform = Transform3D(1.0380492, 0.00042404453, 0.00042333902, 0.0004174491, -1.0086461, -0.013279483, 0.000402311, 0.01342404, -0.99993396, 1.4267193, 1.358394, -0.21366815)
+
+[node name="MAO_R_001" parent="Object_001/Skeleton3D/Hand_R" index="0" unique_id=977142922]
+transform = Transform3D(0.9999999, 0.00040789245, 0.00040856152, 0.00040856146, -0.9999987, -0.0016389043, 0.0004078924, 0.001639071, -0.9999987, -1.3234979, 1.1387573, -0.18682432)
+
+[node name="Ear_L" parent="Object_001/Skeleton3D" index="2" unique_id=1521669222]
+transform = Transform3D(-0.7263605, -0.741101, 0.02676811, 0.72063714, -0.7052636, 0.028796352, -0.0025367718, 0.038579572, 0.99927664, -0.8547524, 4.388764, -0.09169108)
+
+[node name="ORELHA_L_001" parent="Object_001/Skeleton3D/Ear_L" index="0" unique_id=1501399652]
+transform = Transform3D(-0.75206363, 0.65908885, -0.0014586744, -0.65908957, -0.75206447, -2.7717434e-08, -0.0010970354, 0.0009613762, 0.99999905, -3.4875295, 2.7301717, -0.0050872397)
+
+[node name="Ear_R" parent="Object_001/Skeleton3D" index="3" unique_id=1801326225]
+transform = Transform3D(-0.7304981, 0.7373878, -0.013360248, -0.7166103, -0.70942587, 0.026987089, 0.010137191, 0.028153155, 0.99957657, 0.85475224, 4.388764, -0.09169109)
+
+[node name="ORELHA_R_001" parent="Object_001/Skeleton3D/Ear_R" index="0" unique_id=1025453991]
+transform = Transform3D(-0.75206363, -0.65908885, 0.0014586743, 0.65908957, -0.75206447, -2.768833e-08, 0.0010970354, 0.0009613761, 0.99999905, 3.4875295, 2.7301717, -0.0050872383)
+
+[node name="Pupila_L" parent="Object_001/Skeleton3D" index="4" unique_id=1649389713]
+transform = Transform3D(1.0371622, 3.960385e-10, 0.04290755, -0.0038686104, 1.0043824, 0.09351214, -0.041156486, -0.09304199, 0.9948356, -0.54897493, 3.4957075, -1.1156036)
+
+[node name="PUPILA_L_001" parent="Object_001/Skeleton3D/Pupila_L" index="0" unique_id=109011042]
+transform = Transform3D(0.999145, -0.0026668604, -0.041248642, 1.3969834e-09, 0.99791634, -0.06451852, 0.04133476, 0.064463384, 0.99706334, 0.4944618, -3.5563078, 0.8422236)
+
+[node name="Reflection_L_001" parent="Object_001/Skeleton3D/Pupila_L" index="1" unique_id=733769104]
+transform = Transform3D(0.999145, -0.0026668604, -0.041248642, 1.3969834e-09, 0.99791634, -0.06451852, 0.04133476, 0.064463384, 0.99706334, 0.4944618, -3.5563078, 0.8422236)
+
+[node name="Olho_Base_L" parent="Object_001/Skeleton3D" index="5" unique_id=652524033]
+transform = Transform3D(1.0380495, -2.134552e-09, 1.7977375e-10, 2.1555877e-09, 1.0083282, 0.028595788, -3.5889602e-10, -0.028607853, 0.999615, -0.5489751, 3.4991088, -0.99668187)
+
+[node name="EYE_L_002" parent="Object_001/Skeleton3D/Olho_Base_L" index="0" unique_id=1358470795]
+transform = Transform3D(1, 2.329676e-09, 1.943974e-16, -2.329676e-09, 1, 5.897088e-08, -5.701436e-17, -5.897088e-08, 1, 0.5288524, -3.4959247, 0.92983526)
+
+[node name="Pupila_R" parent="Object_001/Skeleton3D" index="6" unique_id=1133570251]
+transform = Transform3D(1.0371622, 1.5434895e-10, -0.04290755, 0.00386861, 1.0043824, 0.09351214, 0.041156486, -0.09304199, 0.9948356, 0.54897493, 3.4957075, -1.1156036)
+
+[node name="PUPILA_R_001" parent="Object_001/Skeleton3D/Pupila_R" index="0" unique_id=706257708]
+transform = Transform3D(0.999145, 0.0026668604, 0.041248642, -1.3969834e-09, 0.99791634, -0.06451852, -0.04133476, 0.064463384, 0.99706334, -0.4944618, -3.5563078, 0.8422236)
+
+[node name="Reflection_R_001" parent="Object_001/Skeleton3D/Pupila_R" index="1" unique_id=1305866282]
+transform = Transform3D(0.999145, 0.0026668604, 0.041248642, -1.3969834e-09, 0.99791634, -0.06451852, -0.04133476, 0.064463384, 0.99706334, -0.4944618, -3.5563078, 0.8422236)
+
+[node name="Olho_Base_R" parent="Object_001/Skeleton3D" index="7" unique_id=627865381]
+transform = Transform3D(1.0380495, -2.134552e-09, 1.7977375e-10, 2.1555877e-09, 1.0083282, 0.028595788, -3.5889602e-10, -0.028607853, 0.999615, 0.5489751, 3.4991088, -0.99668187)
+
+[node name="EYE_R_001" parent="Object_001/Skeleton3D/Olho_Base_R" index="0" unique_id=1234244438]
+transform = Transform3D(1, 2.329676e-09, 1.943974e-16, -2.329676e-09, 1, 5.897088e-08, -5.701436e-17, -5.897088e-08, 1, -0.5288524, -3.4959247, 0.92983526)
+
+[node name="Palpebra_L" parent="Object_001/Skeleton3D" index="8" unique_id=1061502054]
+transform = Transform3D(1.0380495, -2.1345523e-09, 2.4767004e-07, -4.66218e-09, 1.0083283, 0.028595788, -2.386857e-07, -0.028607855, 0.999615, -0.54897517, 3.4994326, -0.98535347)
+
+[node name="Palpebra_R" parent="Object_001/Skeleton3D" index="9" unique_id=1984740865]
+transform = Transform3D(1.0380495, -2.1345523e-09, -2.4731054e-07, 8.973355e-09, 1.0083283, 0.028595788, 2.3796792e-07, -0.028607855, 0.999615, 0.5489753, 3.4994326, -0.98535347)
+
+[node name="Head" parent="Object_001/Skeleton3D" index="10" unique_id=1619487217]
+transform = Transform3D(1.0380495, -2.1345523e-09, 2.5980929e-09, 2.0889688e-09, 1.0083283, 0.028595788, -2.6876754e-09, -0.028607855, 0.999615, 5.7747602e-09, 2.4428732, -0.03239798)
+
+[node name="Nose" parent="Object_001/Skeleton3D/Head" index="3" unique_id=1256563508]
+transform = Transform3D(0.11798608, 2.7486943e-10, 1.20149225e-17, 0, -5.1573363e-09, 0.11798608, 2.7486938e-10, -0.117986105, -5.1573354e-09, -1.6590669e-09, 0.65624464, -0.90046585)
+
+[node name="Body" parent="Object_001/Skeleton3D" index="11" unique_id=1450624209]
+transform = Transform3D(1.0380495, -1.5530743e-09, 1.6828068e-09, 1.5719442e-09, 1.0086232, 0.014932701, -1.7704674e-09, -0.015062811, 0.9999109, 0, 0, 0)

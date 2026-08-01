@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://bllolfkv56jfr"]
+
+[ext_resource type="Script" uid="uid://ud4gofihb3ew" path="res://scenes/drag_n_drop_controller.gd" id="1_mxnmf"]
+[ext_resource type="ArrayMesh" uid="uid://b6gj0o62yhehi" path="res://Models/GLB format/Cenario/walls.tres" id="2_2nifc"]
+[ext_resource type="MeshLibrary" uid="uid://bt83wh84cpr13" path="res://Models/mesh_libraries/floor_objects_library.meshlib" id="4_wkftn"]
+[ext_resource type="Script" uid="uid://cbb1ghhd4u6gm" path="res://scenes/draggable_body.gd" id="5_m3clv"]
+[ext_resource type="PackedScene" uid="uid://bisuegt11t8e" path="res://Characters_Models/GEMEO01/gemeo_01.tscn" id="6_mxnmf"]
+[ext_resource type="PackedScene" uid="uid://btaiii6l46ey7" path="res://Characters_Models/GEMEO02/gemeo_02.tscn" id="8_4eo0i"]
+[ext_resource type="MeshLibrary" uid="uid://dqpgh8cdh3hi4" path="res://Models/mesh_libraries/wall_objects_library.meshlib" id="9_3ywx5"]
+[ext_resource type="PackedScene" uid="uid://demwo0ybs51a4" path="res://Characters_Models/GATO/gato.tscn" id="9_86ljf"]
+[ext_resource type="PackedScene" uid="uid://c6ipdb1ma8nmv" path="res://scenes/player.tscn" id="10_3ywx5"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bexhn"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_t7iv1"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2nifc"]
+plane = Plane(-1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_wkftn"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q4iis"]
+plane = Plane(0, 0, -1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3clv"]
+size = Vector3(0.5015869, 1.1168671, 0.5168762)
+
+[sub_resource type="Environment" id="Environment_sypgb"]
+background_mode = 1
+background_color = Color(0.8862745, 0.5372549, 0.5411765, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1423744099]
+
+[node name="DragNDropController" type="Node3D" parent="." unique_id=1406855381 groups=["moveable"]]
+script = ExtResource("1_mxnmf")
+ground_layer_mask = 1
+moveable_layer_mask = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1629758946]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 10, 0)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=685834747]
+collision_mask = 0
+
+[node name="FloorCollision" type="CollisionShape3D" parent="Floor" unique_id=312732425]
+shape = SubResource("WorldBoundaryShape3D_bexhn")
+
+[node name="Walls" type="StaticBody3D" parent="." unique_id=548355869]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Walls" unique_id=1066320599]
+mesh = ExtResource("2_2nifc")
+
+[node name="EWallCollision" type="CollisionShape3D" parent="Walls" unique_id=49375908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9896786, -0.12988742, 0)
+shape = SubResource("WorldBoundaryShape3D_t7iv1")
+
+[node name="WWallCollision" type="CollisionShape3D" parent="Walls" unique_id=1837366913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0067985, -0.12988742, 0)
+shape = SubResource("WorldBoundaryShape3D_2nifc")
+
+[node name="NWallCollision" type="CollisionShape3D" parent="Walls" unique_id=752598836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0067985, -0.12988742, -2.984099)
+shape = SubResource("WorldBoundaryShape3D_wkftn")
+
+[node name="SWallCollision" type="CollisionShape3D" parent="Walls" unique_id=368980935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0067985, -0.12988742, 2.995367)
+shape = SubResource("WorldBoundaryShape3D_q4iis")
+
+[node name="FloorGridMap" type="GridMap" parent="." unique_id=1491262805]
+mesh_library = ExtResource("4_wkftn")
+cell_size = Vector3(0.5, 0.5, 0.5)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(3, 65531, 5, 65532, 65530, 1, 1, 2, 6, 65532, 1, 3, 0, 4, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Gemeo1" type="CharacterBody3D" parent="." unique_id=429911643 node_paths=PackedStringArray("model") groups=["moveable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07110596, 0)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("5_m3clv")
+model = NodePath("Gemeo01")
+metadata/_custom_type_script = "uid://cbb1ghhd4u6gm"
+
+[node name="Gemeo01" parent="Gemeo1" unique_id=151333570 instance=ExtResource("6_mxnmf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo1" unique_id=1623790265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0006713867, 0.563591, 0)
+shape = SubResource("BoxShape3D_m3clv")
+
+[node name="Gemeo2" type="CharacterBody3D" parent="." unique_id=81211185 node_paths=PackedStringArray("model") groups=["moveable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3984375, 0.100875854, 0)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("5_m3clv")
+model = NodePath("Gemeo02")
+metadata/_custom_type_script = "uid://cbb1ghhd4u6gm"
+
+[node name="Gemeo02" parent="Gemeo2" unique_id=216310736 instance=ExtResource("8_4eo0i")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gemeo2" unique_id=18527286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0006713867, 0.563591, 0.00019836426)
+shape = SubResource("BoxShape3D_m3clv")
+
+[node name="Gato" type="CharacterBody3D" parent="." unique_id=131585794 node_paths=PackedStringArray("model") groups=["moveable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1317139, 0.100875854, 0)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("5_m3clv")
+model = NodePath("GATO")
+metadata/_custom_type_script = "uid://cbb1ghhd4u6gm"
+
+[node name="GATO" parent="Gato" unique_id=1529538516 instance=ExtResource("9_86ljf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0063476563, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gato" unique_id=2067771143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0006713867, 0.563591, 0.00019836426)
+shape = SubResource("BoxShape3D_m3clv")
+
+[node name="TopdownCamera" type="Camera3D" parent="." unique_id=961850796]
+process_mode = 4
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 3.2224646, 5.442746, 3.2224646)
+visible = false
+projection = 1
+current = true
+size = 7.0
+
+[node name="PlayerCharacter" parent="." unique_id=307017552 instance=ExtResource("10_3ywx5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.2858886, 0.08711243, 2.6741123)
+
+[node name="TopdownSubviewPort" type="SubViewportContainer" parent="." unique_id=900643805]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="TopdownSubviewPort" unique_id=923446661]
+handle_input_locally = false
+size = Vector2i(960, 540)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="TopdownSubviewPort/SubViewport" unique_id=1677479335]
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.7071068, -0.7071068, -0.5, 0.5, 3.2224646, 5.442746, 3.2224646)
+environment = SubResource("Environment_sypgb")
+projection = 1
+current = true
+size = 7.0
+
+[node name="PictureSubviewport" type="SubViewportContainer" parent="." unique_id=1313477955]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -371.0
+offset_right = -112.0
+offset_bottom = -115.0
+grow_horizontal = 0
+grow_vertical = 0
+stretch_shrink = 4
+
+[node name="SubViewport" type="SubViewport" parent="PictureSubviewport" unique_id=1752664945]
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="PictureSubviewport/SubViewport" unique_id=85441314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20451117, 2.0018613, 1.5282264)
+projection = 1
+current = true
+size = 4.0
+
+[node name="WallGridMap" type="GridMap" parent="." unique_id=1748683945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh_library = ExtResource("9_3ywx5")
+cell_size = Vector3(0.5, 0.5, 0.5)
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(262147, 0, 2, 327679, 0, 0, 327678, 0, 1)
+}
+metadata/_editor_floor_ = Vector3(0, 4, 0)

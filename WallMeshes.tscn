@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bb4neln27dgtq"]
+
+[ext_resource type="ArrayMesh" uid="uid://o2kr63b7ojij" path="res://Models/GLB format/Cenario/picture_2.tres" id="1_l4umc"]
+[ext_resource type="ArrayMesh" uid="uid://bvh8800b0f732" path="res://Models/GLB format/Cenario/Picture_3.tres" id="2_bjxfe"]
+[ext_resource type="ArrayMesh" uid="uid://cd50waxql4jqa" path="res://Models/GLB format/Cenario/shelf_1.tres" id="3_unjsi"]
+[ext_resource type="ArrayMesh" uid="uid://deke18c4rchl7" path="res://Models/GLB format/Cenario/shelf_2.tres" id="4_hlm6d"]
+
+[node name="Node3D" type="Node3D" unique_id=1182492903]
+
+[node name="Picture2" type="MeshInstance3D" parent="." unique_id=808695552]
+mesh = ExtResource("1_l4umc")
+
+[node name="Picture3" type="MeshInstance3D" parent="." unique_id=1669465062]
+mesh = ExtResource("2_bjxfe")
+
+[node name="Shelf1" type="MeshInstance3D" parent="." unique_id=1663377945]
+mesh = ExtResource("3_unjsi")
+
+[node name="Shelf2" type="MeshInstance3D" parent="." unique_id=532030778]
+mesh = ExtResource("4_hlm6d")

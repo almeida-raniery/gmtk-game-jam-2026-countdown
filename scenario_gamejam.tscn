@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://5cy6m5p4mcwm"]
+
+[ext_resource type="PackedScene" uid="uid://q3jniflfjuos" path="res://Models/GLB format/Cenario/SCENARIO_GAMEJAM.fbx" id="1_kolbd"]
+
+[node name="SCENARIO_GAMEJAM" unique_id=1935873219 instance=ExtResource("1_kolbd")]

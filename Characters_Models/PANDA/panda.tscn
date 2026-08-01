@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cdnfj6k8s37h7"]
+
+[ext_resource type="PackedScene" uid="uid://b5km8uii6gb4h" path="res://Models/GLB format/Characters_Models/PANDA/PANDA.glb" id="1_6065k"]
+
+[node name="PANDA" unique_id=2140236686 instance=ExtResource("1_6065k")]
+
+[node name="Object" parent="." index="0" unique_id=1310903920]
+transform = Transform3D(-1.13649605e-08, 0, 0.26, 0, 0.26, 0, -0.26, 0, -1.13649605e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Object" index="0" unique_id=2055422548]
+bones/1/rotation = Quaternion(0.7265003, -3.1676793e-11, 1.1384693e-09, 0.6871663)
+bones/1/scale = Vector3(1, 1.0663161, 1.0002108)
+bones/2/position = Vector3(-1.4857363, 1.616912, -0.2027444)
+bones/2/rotation = Quaternion(0.9999997, 0.0002040827, 0.00020406404, -0.0008194868)
+bones/3/position = Vector3(1.4556419, 1.6169119, -0.20274432)
+bones/3/rotation = Quaternion(0.9999997, 0.0002040827, 0.00020406404, -0.0008194868)
+bones/4/rotation = Quaternion(0.047563717, 2.6539163e-10, 4.5280873e-10, 0.9988683)
+bones/6/position = Vector3(3.1966019e-09, 0.81963664, -1.3721232)
+bones/8/position = Vector3(-0.39480218, 1.4138215, -0.09245657)
+bones/8/rotation = Quaternion(-0.107735604, -0.073520534, 0.4413621, 0.8877991)
+bones/9/position = Vector3(0.39453775, 1.4116092, -0.09349218)
+bones/9/rotation = Quaternion(-0.1235404, 0.069877096, -0.45058134, 0.88138044)
+
+[node name="Hand_L" parent="Object/Skeleton3D" index="0" unique_id=710167377]
+transform = Transform3D(0.9999998, 0.0004085013, 0.00040779173, 0.00041159458, -1.0645884, 0.057115313, 0.0004319946, -0.060666457, -0.9985785, -1.4857363, 1.7327214, -0.1070301)
+
+[node name="Hand_R" parent="Object/Skeleton3D" index="1" unique_id=340378447]
+transform = Transform3D(0.9999998, 0.0004085013, 0.00040779173, 0.00041159458, -1.0645884, 0.057115313, 0.0004319946, -0.060666457, -0.9985785, 1.4556419, 1.7327213, -0.107030034)
+
+[node name="Pupila_L" parent="Object/Skeleton3D" index="2" unique_id=616022645]
+transform = Transform3D(0.99914527, -2.4359732e-09, 0.041334767, 0.006460028, 1.0546024, -0.15615197, -0.04086145, 0.1536568, 0.9877044, -0.5288525, 3.7156568, -0.6519598)
+
+[node name="Pupila_R" parent="Object/Skeleton3D" index="3" unique_id=272012570]
+transform = Transform3D(0.99914527, -2.435973e-09, -0.041334774, -0.0064600245, 1.0546024, -0.15615197, 0.040861458, 0.1536568, 0.9877044, 0.5288525, 3.7156568, -0.6519598)
+
+[node name="Ear_L" parent="Object/Skeleton3D" index="4" unique_id=1264513178]
+transform = Transform3D(0.59958833, -0.76784027, -0.22564378, 0.8376401, 0.659286, -0.017669633, 0.15788844, -0.16303495, 0.97433615, -0.39480218, 4.083823, 0.27288938)
+
+[node name="Ear_R" parent="Object/Skeleton3D" index="5" unique_id=1170536827]
+transform = Transform3D(0.58418727, 0.77700174, 0.23450658, -0.85399234, 0.63806903, 0.013265282, -0.13640839, -0.1909534, 0.9725069, 0.39453775, 4.0816517, 0.2715257)
+
+[node name="Head" parent="Object/Skeleton3D" index="6" unique_id=594344087]
+transform = Transform3D(1, -2.4359732e-09, 2.3401634e-09, 2.7143083e-09, 1.0546024, -0.15628554, -1.950603e-09, 0.1536568, 0.9885493, 5.027007e-09, 2.578354, 0.14704399)
+
+[node name="Body" parent="Object/Skeleton3D" index="7" unique_id=1367249006]
+transform = Transform3D(1, -1.7174746e-09, 1.6110014e-09, 1.6973556e-09, 1.0646809, -0.055370335, -1.5190278e-09, 0.059029832, 0.9986769, 0, 0, 0)

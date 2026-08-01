@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://blt7dest23fk0" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/StateMachine/walk_state_script.gd" id="5_bydtv"]
 [ext_resource type="Script" uid="uid://dvu58wf01wils" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/StateMachine/jump_state_script.gd" id="7_5jn15"]
 [ext_resource type="Script" uid="uid://bh3rdvokmrar1" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/StateMachine/inair_state_script.gd" id="8_w2wq5"]
-[ext_resource type="PackedScene" uid="uid://dlesurg2n8yoo" path="res://scenes/panda.tscn" id="8_y4r1p"]
+[ext_resource type="PackedScene" uid="uid://cdnfj6k8s37h7" path="res://Characters_Models/PANDA/panda.tscn" id="8_y4r1p"]
 [ext_resource type="Script" uid="uid://b0fbr48rbvn27" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/Camera/camera_script.gd" id="9_x6xif"]
 [ext_resource type="Script" uid="uid://dx02l6p6behb8" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/HUD/hud_script.gd" id="10_2they"]
 [ext_resource type="Texture2D" uid="uid://cc2gr21tqe3wt" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/HUD/crosshair.png" id="11_bkj7j"]
@@ -22,11 +22,13 @@ _data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(30, 30), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5yjma"]
+radius = 0.2680664
+height = 1.2202148
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=307017552 groups=["PlayerCharacter"]]
 process_mode = 4
-collision_layer = 2
-collision_mask = 3
+collision_layer = 8
+collision_mask = 7
 floor_block_on_wall = false
 floor_max_angle = 1.13446
 floor_snap_length = 0.0
@@ -60,11 +62,10 @@ metadata/_custom_type_script = "uid://dvu58wf01wils"
 script = ExtResource("8_w2wq5")
 metadata/_custom_type_script = "uid://bh3rdvokmrar1"
 
-[node name="CameraHolder" type="Node3D" parent="." unique_id=1750117354 node_paths=PackedStringArray("model")]
+[node name="CameraHolder" type="Node3D" parent="." unique_id=1750117354]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.55, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.91198236, 0)
 script = ExtResource("9_x6xif")
-model = NodePath("../PANDA")
 enable_forward_tilt = false
 enable_side_tilt = false
 enable_headbob = false
@@ -78,12 +79,13 @@ far = 1000.0
 
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=599971163]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59350586, 0)
 shape = SubResource("CapsuleShape3D_5yjma")
 
-[node name="PANDA" parent="." unique_id=1227901571 instance=ExtResource("8_y4r1p")]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0, -0.9448906, 0)
+[node name="PANDA" parent="." unique_id=2140236686 instance=ExtResource("8_y4r1p")]
 
 [node name="Raycasts" type="Node3D" parent="." unique_id=2079423533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7467853, 0)
 
 [node name="CeilingCheck" type="RayCast3D" parent="Raycasts" unique_id=815494865]
 unique_name_in_owner = true

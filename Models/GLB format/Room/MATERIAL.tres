@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://746omoeygvxm"]
+
+[ext_resource type="Texture2D" uid="uid://d2vw04gkg6rim" path="res://Models/GLB format/Room/theRoom_SCENARIO_GAMEJAM_MATERIAL_BaseColor.png" id="1_x1wlk"]
+
+[resource]
+resource_name = "MATERIAL"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("1_x1wlk")
