@@ -189,3 +189,7 @@ data = {
 "cells": PackedInt32Array(262147, 0, 2, 327679, 0, 0, 327678, 0, 1)
 }
 metadata/_editor_floor_ = Vector3(0, 4, 0)
+
+[connection signal="state_changed" from="Gemeo1" to="Gemeo1/Gemeo01" method="play_animation"]
+[connection signal="state_changed" from="Gemeo2" to="Gemeo2/Gemeo02" method="play_animation"]
+[connection signal="state_changed" from="Gato" to="Gato/GATO" method="play_animation"]

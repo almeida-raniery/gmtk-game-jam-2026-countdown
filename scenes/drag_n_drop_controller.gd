@@ -47,8 +47,10 @@ func drag_and_drop(intersect: Dictionary):
 		draggingCollider = intersect.collider
 		draggingCollider.is_dragging = true
 		draggingCollider.set_physics_process(false)
+		draggingCollider.state_changed.emit(MoveableModel.AnimationState.PICKED)
 	elif draggingCollider:
 		draggingCollider.global_position = draggingCollider.model.global_position
+		draggingCollider.state_changed.emit(MoveableModel.AnimationState.IDLE)
 		draggingCollider.model.position = Vector3.ZERO
 		draggingCollider.set_physics_process(true)
 		draggingCollider.is_dragging = false

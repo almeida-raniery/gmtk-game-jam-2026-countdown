@@ -2,6 +2,8 @@ class_name MoveableBody extends CharacterBody3D
 
 const SPEED = 30
 
+signal state_changed(state: MoveableModel.AnimationState)
+
 @export var pose: CharacterScoreResource.CharacterPose
 @export var model: Node3D
 
